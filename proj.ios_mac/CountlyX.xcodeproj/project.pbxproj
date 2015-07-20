@@ -14,7 +14,7 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		3901277D1B5510190041FC56 /* CountlyDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3901277B1B5510190041FC56 /* CountlyDB.cpp */; };
 		390127801B55242C0041FC56 /* CountlyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3901277E1B55242C0041FC56 /* CountlyEvent.cpp */; };
-		390127831B55267D0041FC56 /* CounltyEventQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390127811B55267D0041FC56 /* CounltyEventQueue.cpp */; };
+		390127831B55267D0041FC56 /* CountlyEventQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390127811B55267D0041FC56 /* CountlyEventQueue.cpp */; };
 		395BB9BC1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 395BB9BA1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp */; };
 		398C03741B4C20BC002BD576 /* Countly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398C03721B4C20BC002BD576 /* Countly.cpp */; };
 		39CFA2A41B4D179C0075B08F /* CountlyDeviceInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39CFA2A31B4D179C0075B08F /* CountlyDeviceInfo.mm */; };
@@ -120,8 +120,8 @@
 		3901277C1B5510190041FC56 /* CountlyDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDB.h; sourceTree = "<group>"; };
 		3901277E1B55242C0041FC56 /* CountlyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyEvent.cpp; sourceTree = "<group>"; };
 		3901277F1B55242C0041FC56 /* CountlyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEvent.h; sourceTree = "<group>"; };
-		390127811B55267D0041FC56 /* CounltyEventQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CounltyEventQueue.cpp; sourceTree = "<group>"; };
-		390127821B55267D0041FC56 /* CounltyEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounltyEventQueue.h; sourceTree = "<group>"; };
+		390127811B55267D0041FC56 /* CountlyEventQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyEventQueue.cpp; sourceTree = "<group>"; };
+		390127821B55267D0041FC56 /* CountlyEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEventQueue.h; sourceTree = "<group>"; };
 		395BB9BA1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyConnectionQueue.cpp; sourceTree = "<group>"; };
 		395BB9BB1B53ACEE00F6A10D /* CountlyConnectionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnectionQueue.h; sourceTree = "<group>"; };
 		398C03721B4C20BC002BD576 /* Countly.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Countly.cpp; sourceTree = "<group>"; };
@@ -318,8 +318,8 @@
 				3901277C1B5510190041FC56 /* CountlyDB.h */,
 				3901277E1B55242C0041FC56 /* CountlyEvent.cpp */,
 				3901277F1B55242C0041FC56 /* CountlyEvent.h */,
-				390127811B55267D0041FC56 /* CounltyEventQueue.cpp */,
-				390127821B55267D0041FC56 /* CounltyEventQueue.h */,
+				390127811B55267D0041FC56 /* CountlyEventQueue.cpp */,
+				390127821B55267D0041FC56 /* CountlyEventQueue.h */,
 			);
 			path = countly_sdk;
 			sourceTree = "<group>";
@@ -550,7 +550,7 @@
 				3901277D1B5510190041FC56 /* CountlyDB.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				395BB9BC1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp in Sources */,
-				390127831B55267D0041FC56 /* CounltyEventQueue.cpp in Sources */,
+				390127831B55267D0041FC56 /* CountlyEventQueue.cpp in Sources */,
 				398C03741B4C20BC002BD576 /* Countly.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,

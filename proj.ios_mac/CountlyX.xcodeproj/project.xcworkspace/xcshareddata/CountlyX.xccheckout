@@ -7,25 +7,29 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>16A6C19E-3DF7-4E23-A41B-70DD2CB98ECD</string>
 	<key>IDESourceControlProjectName</key>
-	<string>CountlyX</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>1B87237D286859017E1B2D61E608593131D2DE4C</key>
+		<string>https://github.com/Countly/countly-sdk-cocos2d-x.git</string>
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>https://github.com/cocos2d/cocos2d-x.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Countly/CountlyX/proj.ios_mac/CountlyX.xcodeproj</string>
+	<string>proj.ios_mac/CountlyX.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>1B87237D286859017E1B2D61E608593131D2DE4C</key>
+		<string>../../..</string>
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/cocos2d/cocos2d-x.git</string>
+	<string>https://github.com/Countly/countly-sdk-cocos2d-x.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
+	<string>1B87237D286859017E1B2D61E608593131D2DE4C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -34,7 +38,15 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>cocos2d-x</string>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1B87237D286859017E1B2D61E608593131D2DE4C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CountlyX</string>
 		</dict>
 	</array>
 </dict>

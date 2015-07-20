@@ -10,7 +10,7 @@
 #define __CountlyX__Countly__
 
 #include "cocos2d.h"
-#include "CounltyEventQueue.h"
+#include "CountlyEventQueue.h"
 using namespace std;
 USING_NS_CC;
 class Countly : public Ref {

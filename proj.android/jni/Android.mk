@@ -17,7 +17,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/countly_sdk/CountlyEvent.cpp \
                    ../../Classes/countly_sdk/CountlyUtils.cpp \
                    ../../Classes/countly_sdk/CountlyDeviceInfo.cpp \
-                   ../../Classes/countly_sdk/CounltyEventQueue.cpp \
+                   ../../Classes/countly_sdk/CountlyEventQueue.cpp \
                    ../../Classes/countly_sdk/CountlyDeviceInfoModel.cpp \
                    ../../Classes/countly_sdk/CountlyConnectionQueue.cpp
 
