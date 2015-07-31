@@ -15,9 +15,9 @@ There are also other Countly SDK repositories (both official and community suppo
 ### Implemented features 
 
 * General analytics features (iOS & Android) 
-* Crash reporting: Crash reporting is implemented for iOS (objective-c) and C++. Main features of crash reporting.
+* Crash reporting: Crash reporting is implemented for iOS (objective-c) and C++. Main features are: 
 
- * Uncaught Exception Handler: Its responsibilities would be handling of uncaught exception, creation of crash report on the basis of exception and device information (some information of devices is still in progress like RAM, Disk etc).
+ * Uncaught Exception Handler: Handling of uncaught exception, creation of crash report on the basis of exception and device information (some information of devices is still in progress like RAM, disk etc).
  * Signal Handler: It handles signals raised through code like SIGABRT, SIGSEGV etc, backtrace the symbols, create an exception on the basis of signal, backtrace it and send this exception to uncaught exception handler.
  * Terminate Handler for C++: It will handle the uncaught exception, re-throw that exception, backtrace the symbols, create an exception on the basis of symbols & reason and send that exception to uncaught exception handler.
 
