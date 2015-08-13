@@ -26,19 +26,26 @@ private:
   bool startedWithTest;
   CountlyConnectionQueue();
   Vector<__String*> dataQueue;
+  Map<string, __String*> crashCustom;
 public:
   __String *locationString;
   static CountlyConnectionQueue* sharedInstance();
   
   void tick();
+  string getAppKey();
+  string getAppHost();
   void beginSession();
+  void sendUserDetails();
   void setAppKey(string key);
   void setAppHost(string host);
   void addToQueue(__String* data);
   void recordEvents(string events);
-  void httpRequestUrl(__String *url);
+  void httpRequestUrl(__String *url, bool isImmediate = false);
+  void reportCrash(string crashReport);
   void endSessionWithDuration(int duration);
   void updateSessionWithDuration(int duration);
+  void setCrashCustom(Map<string, __String*> custom);
+  void reportCrash(string error, string reason, bool nonfatal);
   
   //Http Response Callback
   void onHttpRequestCompleted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);

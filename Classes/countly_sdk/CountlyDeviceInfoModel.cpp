@@ -51,8 +51,17 @@ const char* CountlyDeviceInfoModel::populateMetrics() {
   writer.String(CountlyDeviceInfo::getDeviceSystemName());
   writer.String("_os_version");
   writer.String(CountlyDeviceInfo::getDeviceSystemVersion());
+  const char* carrierName = CountlyDeviceInfo::getCarrierName();
+  if(carrierName != NULL) {
+    writer.String("_carrier");
+    writer.String(carrierName);
+  }
   writer.String("_resolution");
   writer.String(CountlyUtils::getDeviceResolution());
+  writer.String("_locale");
+  writer.String(CountlyDeviceInfo::locale());
+  writer.String("_app_version");
+  writer.String(CountlyDeviceInfo::appVersion());
   writer.String("_device_model");
   writer.String(CountlyDeviceInfo::getDeviceModel());
   writer.EndObject();
@@ -71,6 +80,9 @@ const char* CountlyDeviceInfoModel::getDeviceId() {
 }
 const char* CountlyDeviceInfoModel::getUserAgent() {
   return CountlyDeviceInfo::getUserAgent();
+}
+const char* CountlyDeviceInfoModel::getAppVersion() {
+  return CountlyDeviceInfo::appVersion();
 }
 const char* CountlyDeviceInfoModel::getDeviceModel() {
   return CountlyDeviceInfo::getDeviceId();

@@ -5,13 +5,20 @@
 //  Created by Junaid on 07/07/2015.
 //
 //
+
+//#include <execinfo.h>
+#include <signal.h>
 #include "Countly.h"
 #include "CountlyUtils.h"
+#include "CountlyUserDetails.h"
+#include "CountlyBackTrace.h"
 #include "external/json/writer.h"
 #include "external/json/document.h"
 #include "external/json/stringbuffer.h"
 #include "CountlyDeviceInfoModel.h"
 #include "CountlyConnectionQueue.h"
+#include "CountlyExceptionHandler.h"
+
 
 #define COUNTLY_EVENT_SEND_THRESHOLD 10
 #define COUNTLY_DEFAULT_UPDATE_INTERVAL 60.0
@@ -22,11 +29,13 @@ const char *Countly::COUNTLY_EVENT_ENTER_FORGROUND = "willEnterForegroundCallBac
 USING_NS_CC;
 static Countly * instance = NULL;
 Countly::Countly () {
+  startTime = time(NULL);
   auto dispatcher = Director::getInstance()->getEventDispatcher();
   
   dispatcher->addCustomEventListener(COUNTLY_EVENT_ENTER_BACKGROUND, std::bind(&Countly::didEnterBackgroundCallBack, this, std::placeholders::_1));
   
   dispatcher->addCustomEventListener(COUNTLY_EVENT_ENTER_FORGROUND, std::bind(&Countly::willEnterForegroundCallBack, this, std::placeholders::_1));
+  
 }
 
 
@@ -54,7 +63,36 @@ void Countly::start(string appKey, string appHost) {
   CountlyConnectionQueue::sharedInstance()->setAppKey(appKey);
   CountlyConnectionQueue::sharedInstance()->setAppHost(appHost);
   CountlyConnectionQueue::sharedInstance()->beginSession();
+ 
   
+  Map<std::string, __String*> customCrash;
+  
+  customCrash.insert("facebook_sdk", __String::create("3.5"));
+  customCrash.insert("admob", __String::create("6.5"));
+  startCrashReportingWithSegments(customCrash);
+}
+
+void Countly::reportCrash(string reason) {
+  string error = CountlyBackTrace::getBacktrace();
+  CountlyConnectionQueue::sharedInstance()->reportCrash(error, reason, false);
+}
+
+void Countly::terminateHandler()
+{
+  string reason = "";
+  reason = "Terminated due to unknown reason :(";
+  reportCrash(reason);
+  std::abort();
+}
+
+void Countly::startCrashReporting() {
+  CountlyExceptionHandler::startCrashReporting();
+}
+
+
+void Countly::startCrashReportingWithSegments(Map<string, __String*> custom) {
+  CountlyConnectionQueue::sharedInstance()->setCrashCustom(custom);
+  startCrashReporting();
 }
 
 void Countly::startOnCloudWithAppKey(string appKey) {
@@ -112,18 +150,30 @@ void Countly::recordEvent(string pKey, int pCount) {
   eventQueue->recordEvent(pKey, pCount);
   checkEventThreshold();
 }
-void Countly::recordEvent(string pKey, int pCount, float pSum) {
+void Countly::recordEvent(string pKey, float pSum, int pCount) {
   eventQueue->recordEvent(pKey, pCount, pSum);
   checkEventThreshold();
 }
-void Countly::recordEvent(string pKey, int pCount, Map<string, __String*> pSegmentation) {
+void Countly::recordEvent(string pKey, Map<string, __String*> pSegmentation, int pCount) {
   eventQueue->recordEvent(pKey, pCount, pSegmentation);
   checkEventThreshold();
 }
-void Countly::recordEvent(string pKey, int pCount, float pSum, Map<string, __String*> pSegmentation) {
+void Countly::recordEvent(string pKey, Map<string, __String*> pSegmentation, float pSum, int pCount) {
   eventQueue->recordEvent(pKey, pCount, pSum, pSegmentation);
   checkEventThreshold();
 }
+
+
+void Countly::recordUserDetails(Map<string, __String*> pUserMap) {
+  CountlyUserDetails::sharedInstance()->setUserData(pUserMap);
+  CountlyConnectionQueue::sharedInstance()->sendUserDetails();
+}
+
+void Countly::recordUserDetails(Map<string, __String*> pUserMap, Map<string, __String*> pUserCustom) {
+  CountlyUserDetails::sharedInstance()->setUserData(pUserMap, pUserCustom);
+  CountlyConnectionQueue::sharedInstance()->sendUserDetails();
+}
+
 
 void Countly::checkEventThreshold() {
   if(eventQueue->eventCount() >= COUNTLY_EVENT_SEND_THRESHOLD) {
@@ -139,7 +189,13 @@ void Countly::recordEvents() {
   }
 }
 
+time_t Countly::getStartTime() {
+  return  startTime;
+}
 
+long Countly::timeSinceLaunch() {
+  return time(NULL) - getStartTime();
+}
 // Temp Functions for testing
 
 
@@ -147,7 +203,7 @@ void Countly::printDeviceInfo() {
 	CCLOG("printDeviceInfo");
 	
   CCLOG("%s",CountlyDeviceInfoModel::getDeviceId());
-  CCLOG("%s",CountlyDeviceInfoModel::getUserAgent());
+//  CCLOG("%s",CountlyDeviceInfoModel::getUserAgent());
   CCLOG("%s",CountlyDeviceInfoModel::getDeviceModel());
 //  CCLOG(CountlyDeviceInfo::getCarrierName());
   CCLOG("%s",CountlyDeviceInfoModel::getDeviceResolution());

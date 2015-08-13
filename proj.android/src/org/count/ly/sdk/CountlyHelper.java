@@ -1,9 +1,13 @@
 package org.count.ly.sdk;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Locale;
 import java.util.UUID;
 
 import org.cocos2dx.lib.Cocos2dxHelper;
 
+import android.R.string;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -12,8 +16,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
 
 public class CountlyHelper {
+	public static native String reportCrash(String error, String reason, boolean nonfatal);
 	
 	static Activity me;
 	public static void init(Context context) {
@@ -40,6 +47,37 @@ public class CountlyHelper {
 		return operatorName;
 	}
 	
+	 public static synchronized void enableCrashReporting() {
+	        //get default handler
+	        final Thread.UncaughtExceptionHandler oldHandler = Thread.getDefaultUncaughtExceptionHandler();
+
+	        Thread.UncaughtExceptionHandler handler = new Thread.UncaughtExceptionHandler() {
+
+	            @Override
+	            public void uncaughtException(Thread t, Throwable e) {
+	                StringWriter sw = new StringWriter();
+	                PrintWriter pw = new PrintWriter(sw);
+	                e.printStackTrace(pw);
+	                reportCrash(sw.toString(), "Uncaught Exception", false);
+
+	                //if there was another handler before
+	                if(oldHandler != null){
+	                    //notify it also
+	                    oldHandler.uncaughtException(t,e);
+	                }
+	            }
+	        };
+
+	        Thread.setDefaultUncaughtExceptionHandler(handler);
+	        
+//	        return this;
+	    }
+
+	
+	 public static void testCrash() {
+		 String[] strings = {"a","b"};
+	     String str = strings[strings.length];
+	 }
 	public static String getApplicationName() {
 		PackageManager pm = Cocos2dxHelper.getActivity().getPackageManager();
 		ApplicationInfo aInfo;
@@ -89,5 +127,71 @@ public class CountlyHelper {
 	public static String getUserAgent(){
 		return System.getProperty("http.agent");
 	}
+	
+	static String getLocale() {
+        final Locale locale = Locale.getDefault();
+        return locale.getLanguage() + "_" + locale.getCountry();
+    }
+	
+    static String getAppVersion() {
+        String result = "1.0";
+        try {
+            result = Cocos2dxHelper.getActivity().getPackageManager().getPackageInfo(Cocos2dxHelper.getActivity().getPackageName(), 0).versionName;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+                Log.i("Countly", "No app version found");
+        }
+        return result;
+    }
+    
+    static String getStore() {
+        String result = "";
+        if(android.os.Build.VERSION.SDK_INT >= 3 ) {
+            try {
+                result = Cocos2dxHelper.getActivity().getPackageManager().getInstallerPackageName(Cocos2dxHelper.getActivity().getPackageName());
+            } catch (Exception e) {
+                    Log.i("Countly", "Can't get Installer package");
+            }
+            if (result == null || result.length() == 0) {
+                result = "";
+                Log.i("Countly", "No store found");
+            }
+        }
+        return result;
+    }
+
+	
+	static String getDensity() {
+        String densityStr = "";
+        final int density = Cocos2dxHelper.getActivity().getResources().getDisplayMetrics().densityDpi;
+        switch (density) {
+            case DisplayMetrics.DENSITY_LOW:
+                densityStr = "LDPI";
+                break;
+            case DisplayMetrics.DENSITY_MEDIUM:
+                densityStr = "MDPI";
+                break;
+//            case DisplayMetrics.DENSITY_TV:
+//                densityStr = "TVDPI";
+//                break;
+            case DisplayMetrics.DENSITY_HIGH:
+                densityStr = "HDPI";
+                break;
+            case DisplayMetrics.DENSITY_XHIGH:
+                densityStr = "XHDPI";
+                break;
+//            case DisplayMetrics.DENSITY_400:
+//                densityStr = "XMHDPI";
+//                break;
+//            case DisplayMetrics.DENSITY_XXHIGH:
+//                densityStr = "XXHDPI";
+//                break;
+//            case DisplayMetrics.DENSITY_XXXHIGH:
+//                densityStr = "XXXHDPI";
+//                break;
+        }
+        return densityStr;
+    }
+
 
 }

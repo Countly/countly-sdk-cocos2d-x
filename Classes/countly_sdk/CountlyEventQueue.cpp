@@ -6,7 +6,7 @@
 //
 //
 
-#include "CounltyEventQueue.h"
+#include "CountlyEventQueue.h"
 #include "CountlyUtils.h"
 #include "CountlyConnectionQueue.h"
 #include "external/json/writer.h"
@@ -30,24 +30,60 @@ Vector<CountlyEvent*> CountlyEventQueue::getEvents() {
 }
 
 void CountlyEventQueue::recordEvent(string pKey, int pCount) {
+  for(CountlyEvent* event : eventQueue)
+  {
+    if(event->getKey() == pKey) {
+      event->addCount(pCount);
+      return;
+    }
+  }
   CountlyEvent *event = new CountlyEvent();
   event->populateEvent(pKey, pCount);
   addEvent(event);
   
 }
 void CountlyEventQueue::recordEvent(string pKey, int pCount, float pSum) {
+  for(CountlyEvent* event : eventQueue)
+  {
+    if(event->getKey() == pKey) {
+      event->addSum(pSum);
+      event->addCount(pCount);
+      event->addjustTime(time(NULL));
+      return;
+    }
+  }
   CountlyEvent *event = new CountlyEvent();
   event->populateEvent(pKey, pCount, pSum);
   addEvent(event);
+  event->addjustTime(time(NULL));
   
 }
 void CountlyEventQueue::recordEvent(string pKey, int pCount, Map<string, __String*> pSegmentation) {
+  for(CountlyEvent* event : eventQueue)
+  {
+    bool isSegEqual = CountlyUtils::isMapEquals(event->getSegmentation(), pSegmentation);
+    if(event->getKey() == pKey && isSegEqual) {
+      event->addCount(pCount);
+      event->addjustTime(time(NULL));
+      return;
+    }
+  }
   CountlyEvent *event = new CountlyEvent();
   event->populateEvent(pKey, pCount, pSegmentation);
   addEvent(event);
   
 }
 void CountlyEventQueue::recordEvent(string pKey, int pCount, float pSum, Map<string, __String*> pSegmentation) {
+  for(CountlyEvent* event : eventQueue)
+  {
+    bool isSegEqual = CountlyUtils::isMapEquals(event->getSegmentation(), pSegmentation);
+    if(event->getKey() == pKey && isSegEqual) {
+      event->addSum(pSum);
+      event->addCount(pCount);
+      event->addjustTime(time(NULL));
+      return;
+    }
+  }
   CountlyEvent *event = new CountlyEvent();
   event->populateEvent(pKey, pCount, pSum, pSegmentation);
   addEvent(event);

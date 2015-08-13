@@ -16,28 +16,32 @@ CountlyEvent::CountlyEvent() {
   count = 0;
   sum = 0.0f;
   segmentation.clear();
+  timestamp = time(NULL);
 }
-
 
 void CountlyEvent::populateEvent(string pKey, int pCount) {
   key = pKey;
   count = pCount;
+  timestamp = time(NULL);
 }
 void CountlyEvent::populateEvent(string pKey, int pCount, float pSum) {
   key = pKey;
   sum = pSum;
   count = pCount;
+  timestamp = time(NULL);
 }
 void CountlyEvent::populateEvent(string pKey, int pCount, Map<string, __String*> pSegmentation) {
   key = pKey;
   count = pCount;
   segmentation = pSegmentation;
+  timestamp = time(NULL);
 }
 void CountlyEvent::populateEvent(string pKey, int pCount, float pSum, Map<string, __String*> pSegmentation) {
   key = pKey;
   sum = pSum;
   count = pCount;
   segmentation = pSegmentation;
+  timestamp = time(NULL);
 }
 
 void CountlyEvent::serializedData(rapidjson::Writer<rapidjson::StringBuffer> &writer) {
@@ -68,4 +72,24 @@ void CountlyEvent::serializedData(rapidjson::Writer<rapidjson::StringBuffer> &wr
   }
   writer.EndObject();
   
+}
+
+string CountlyEvent::getKey() {
+  return key;
+}
+
+void CountlyEvent::addSum(float pSum) {
+  sum += pSum;
+}
+
+void CountlyEvent::addCount(int pCount) {
+  count += pCount;
+}
+
+void CountlyEvent::addjustTime(time_t pTimestamp) {
+  timestamp =  (timestamp + pTimestamp)/2;
+}
+
+Map<string, __String*> CountlyEvent::getSegmentation() {
+  return segmentation;
 }

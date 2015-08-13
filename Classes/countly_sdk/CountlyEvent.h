@@ -25,6 +25,12 @@ private:
   time_t timestamp;
   Map<string, __String*> segmentation;
 public:
+  string getKey();
+  void addSum(float pSum);
+  void addCount(int pCount);
+  void addjustTime(time_t pTimestamp);
+  Map<string, __String*> getSegmentation();
+  
   CountlyEvent();
   void populateEvent(string pKey, int pCount);
   void populateEvent(string pKey, int pCount, float pSum);

@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "Countly.h"
 #include "CountlyUtils.h"
+#include "CountlyExceptionHandler.h"
 
 USING_NS_CC;
 
@@ -92,39 +93,83 @@ void HelloWorld::testCountlyEvents() {
   map1.insert("MAP_KEY_2", __String::create("testing2"));
   
   
-  Countly::sharedInstance()->recordEvent("Key_2", 1);
-  Countly::sharedInstance()->recordEvent("Key_1", 3);
-  Countly::sharedInstance()->recordEvent("Key_4", 2);
-  Countly::sharedInstance()->recordEvent("Key_3", 5);
+  Countly::sharedInstance()->recordEvent("Key_2_a", 1);
+  Countly::sharedInstance()->recordEvent("Key_1_a", 3);
+  Countly::sharedInstance()->recordEvent("Key_4_a", 2);
+  Countly::sharedInstance()->recordEvent("Key_3_a", 5);
   
-  Countly::sharedInstance()->recordEvent("Key_2", 1,2);
-  Countly::sharedInstance()->recordEvent("Key_1", 3,4);
-  Countly::sharedInstance()->recordEvent("Key_4", 2,6);
-  Countly::sharedInstance()->recordEvent("Key_3", 5,8);
+  Countly::sharedInstance()->recordEvent("Key_2_a", 1);
+  Countly::sharedInstance()->recordEvent("Key_1_a", 3);
+  Countly::sharedInstance()->recordEvent("Key_4_a", 2);
+  Countly::sharedInstance()->recordEvent("Key_3_a", 5);
   
-  Countly::sharedInstance()->recordEvent("Key_2", 1,map0);
-  Countly::sharedInstance()->recordEvent("Key_1", 3,map1);
-  Countly::sharedInstance()->recordEvent("Key_4", 2,map0);
-  Countly::sharedInstance()->recordEvent("Key_3", 5,map1);
-  
-  Countly::sharedInstance()->recordEvent("Key_2", 1,2,map0);
-  Countly::sharedInstance()->recordEvent("Key_1", 3,4,map1);
-  Countly::sharedInstance()->recordEvent("Key_4", 2,6,map0);
-  Countly::sharedInstance()->recordEvent("Key_3", 5,8,map1);
+  Countly::sharedInstance()->recordEvent("Key_2_b", 1,2);
+  Countly::sharedInstance()->recordEvent("Key_1_b", 3,4);
+  Countly::sharedInstance()->recordEvent("Key_4_b", 2,6);
+  Countly::sharedInstance()->recordEvent("Key_3_b", 5,8);
   
   
-  Countly::sharedInstance()->recordEvent("Key_2", 1);
-  Countly::sharedInstance()->recordEvent("Key_1", 3);
-  Countly::sharedInstance()->recordEvent("Key_4", 2);
-  Countly::sharedInstance()->recordEvent("Key_3", 5);
-}
+  Countly::sharedInstance()->recordEvent("Key_2_b", 1,2);
+  Countly::sharedInstance()->recordEvent("Key_1_b", 3,4);
+  Countly::sharedInstance()->recordEvent("Key_4_b", 2,6);
+  Countly::sharedInstance()->recordEvent("Key_3_b", 5,8);
+  
+  
+  Countly::sharedInstance()->recordEvent("Key_2_c", map0);
+  Countly::sharedInstance()->recordEvent("Key_1_c", map1);
+  Countly::sharedInstance()->recordEvent("Key_4_c", map0);
+  Countly::sharedInstance()->recordEvent("Key_3_c", map1);
+  
+  
+  Countly::sharedInstance()->recordEvent("Key_2_c", map0, 1);
+  Countly::sharedInstance()->recordEvent("Key_1_c", map1, 3);
+  Countly::sharedInstance()->recordEvent("Key_4_c", map0, 2);
+  Countly::sharedInstance()->recordEvent("Key_3_c", map1, 5);
+  
+  Countly::sharedInstance()->recordEvent("Key_2_d", map0, 1.99f);
+  Countly::sharedInstance()->recordEvent("Key_1_d", map1, 3.99f);
+  Countly::sharedInstance()->recordEvent("Key_4_d", map0, 2.99f);
+  Countly::sharedInstance()->recordEvent("Key_3_d", map1, 5.99f);
+  
+  Countly::sharedInstance()->recordEvent("Key_2_d", map0, 1.99f, 1);
+  Countly::sharedInstance()->recordEvent("Key_1_d", map1, 3.99f, 2);
+  Countly::sharedInstance()->recordEvent("Key_4_d", map0, 2.99f, 3);
+  Countly::sharedInstance()->recordEvent("Key_3_d", map1, 5.99f, 4);
+  
+  Countly::sharedInstance()->recordEvent("Key_2_d", map0, 1.99f);
+  Countly::sharedInstance()->recordEvent("Key_1_d", map1, 3.99f);
+  Countly::sharedInstance()->recordEvent("Key_4_d", map0, 2.99f);
+  Countly::sharedInstance()->recordEvent("Key_3_d", map1, 5.99f);
+  
+  }
 
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
+  
+  Map<std::string, __String*> data;
+  data.insert(kCLYUserName, __String::create("Junaid"));
+  data.insert(kCLYUserUsername, __String::create("ijunaid"));
+  data.insert(kCLYUserEmail, __String::create("mjunaid.akram@yahoo.com"));
+  data.insert(kCLYUserOrganization, __String::create("Countly"));
+  data.insert(kCLYUserPhone, __String::create("+923349963029"));
+  data.insert(kCLYUserGender, __String::create("M"));
+  data.insert(kCLYUserPicture, __String::create("https://upload.wikimedia.org/wikipedia/commons/4/4f/Polistes_May_2013-2.jpg"));
+//  data.insert(kCLYUserPicturePath, __String::create("ijunaid"));
+  data.insert(kCLYUserBirthYear, __String::create("1987"));
+  
+  
+  Map<std::string, __String*> custom;
+  custom.insert("key1", __String::create("Value1"));
+  custom.insert("key2", __String::create("Value2"));
+  
+  Countly::sharedInstance()->recordUserDetails(data, custom);
+  
+//  throw std::runtime_error("Hello, world!");(SIGABRT);
+//  CountlyExceptionHandler::testCrash();
+//    Director::getInstance()->end();
+//
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//    exit(0);
+//#endif
 }

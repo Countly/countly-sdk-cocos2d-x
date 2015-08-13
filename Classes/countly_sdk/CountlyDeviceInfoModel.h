@@ -25,12 +25,13 @@ private:
   
 public:
   static void populateModel();
-  static const char*  populateMetrics();
   static const char* metrics();
   static const char* getDeviceId();
   static const char* getUserAgent();
+  static const char* getAppVersion();
   static const char* getDeviceModel();
   static const char* getCarrierName();
+  static const char* populateMetrics();
   static const char* getDeviceResolution();
   static const char* getDeviceSystemName();
   static const char* getDeviceSystemVersion();

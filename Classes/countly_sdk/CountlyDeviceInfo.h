@@ -18,6 +18,9 @@ class CountlyDeviceInfo
 public:
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
   
+  static const char* locale();
+  static const char* bundleId();
+  static const char* appVersion();
   static const char* getDeviceId();
   static const char* getUserAgent();
   static const char* getDeviceModel();
@@ -25,6 +28,9 @@ public:
   static const char* getDeviceSystemName();
   static const char* getDeviceSystemVersion();
   #else
+  static const char* locale() {return "";};
+  static const char* bundleId() {return "";};
+  static const char* appVersion() {return "";};
   static const char* getDeviceId() {return "";};
   static const char* getUserAgent() {return "";};
   static const char* getDeviceModel() {return "";};

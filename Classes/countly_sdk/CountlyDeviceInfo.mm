@@ -10,9 +10,24 @@
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 
+const char* CountlyDeviceInfo::locale() {
+  return [[[NSLocale currentLocale] localeIdentifier] cStringUsingEncoding:NSUTF8StringEncoding];
+}
+
+const char* CountlyDeviceInfo::bundleId() {
+  return [[[NSBundle mainBundle] bundleIdentifier] cStringUsingEncoding:NSUTF8StringEncoding];
+}
 
 const char* CountlyDeviceInfo::getDeviceId() {
   return [[[[UIDevice currentDevice] identifierForVendor] UUIDString] cStringUsingEncoding:NSUTF8StringEncoding];
+}
+
+const char* CountlyDeviceInfo::appVersion() {
+  NSString *result = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+  if ([result length] == 0)
+    result = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
+    
+    return [result cStringUsingEncoding:NSUTF8StringEncoding];
 }
 
 const char* CountlyDeviceInfo::getUserAgent()
@@ -30,9 +45,16 @@ const char* CountlyDeviceInfo::getDeviceModel()
 }
 
 const char* CountlyDeviceInfo::getCarrierName() {
+  if (NSClassFromString(@"CTTelephonyNetworkInfo"))
+  {
   CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
   CTCarrier *carrier = [netinfo subscriberCellularProvider];
+    if(carrier == nil) {
+      return NULL;
+    }
   return  [[carrier carrierName] cStringUsingEncoding:NSUTF8StringEncoding];
+  }
+  return NULL;
 }
 
 const char* CountlyDeviceInfo::getDeviceSystemName()
