@@ -44,6 +44,14 @@ void CountlyEvent::populateEvent(string pKey, int pCount, float pSum, Map<string
   timestamp = time(NULL);
 }
 
+void CountlyEvent::populateDBEvent(string pKey, int pCount, float pSum, Map<string, __String*> pSegmentation, time_t time) {
+  key = pKey;
+  sum = pSum;
+  count = pCount;
+  segmentation = pSegmentation;
+  timestamp = time;
+}
+
 void CountlyEvent::serializedData(rapidjson::Writer<rapidjson::StringBuffer> &writer) {
 //  rapidjson::StringBuffer s;
 //  rapidjson::Writer<rapidjson::StringBuffer> writer(s);
@@ -76,6 +84,19 @@ void CountlyEvent::serializedData(rapidjson::Writer<rapidjson::StringBuffer> &wr
 
 string CountlyEvent::getKey() {
   return key;
+}
+
+
+int CountlyEvent::getCount() {
+  return count;
+}
+
+float CountlyEvent::getSum() {
+  return sum;
+}
+
+time_t CountlyEvent::getTime() {
+  return timestamp;
 }
 
 void CountlyEvent::addSum(float pSum) {

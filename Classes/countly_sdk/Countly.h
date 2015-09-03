@@ -53,6 +53,7 @@ public:
   static void terminateHandler();
   void startCrashReporting();
   long timeSinceLaunch();
+  void androidNotifcations();
   void startCrashReportingWithSegments(Map<string, __String*> custom);
   void start(string appKey, string appHost);
   void startOnCloudWithAppKey(string appKey);
@@ -60,10 +61,14 @@ public:
   void didEnterBackgroundCallBack(EventCustom *event);
   void willEnterForegroundCallBack(EventCustom *event);
   
+
   void recordEvent(string pKey, int pCount = 1);
   void recordEvent(string pKey, float pSum, int pCount = 1);
+  void recordPushEvent(string pKey, string messageId, int pCount = 1);
   void recordEvent(string pKey, Map<string, __String*> pSegmentation, int pCount = 1);
   void recordEvent(string pKey, Map<string, __String*> pSegmentation, float pSum, int pCount = 1);
+  
+  void addDBEvent(string pKey, Map<string, __String*> pSegmentation, float pSum, time_t time, int pCount = 1);
   
   void recordUserDetails(Map<string, __String*> pUserMap);
   void recordUserDetails(Map<string, __String*> pUserMap, Map<string, __String*> pUserCustom);

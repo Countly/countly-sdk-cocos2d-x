@@ -8,6 +8,7 @@
 
 #include "Countly.h"
 #include "CountlyUtils.h"
+#include "CountlyDBManager.h"
 #include "CountlyUserDetails.h"
 #include "CountlyCrashDetail.h"
 #include "CountlyConnectionQueue.h"
@@ -23,6 +24,7 @@ using namespace cocos2d::network;
 static CountlyConnectionQueue* instance = NULL;
 CountlyConnectionQueue::CountlyConnectionQueue() {
   bgTask = false;
+  isSessionBegin = false;
   locationString = nullptr;
 }
 
@@ -52,15 +54,37 @@ void CountlyConnectionQueue::setAppHost(string host) {
   appHost = host;
 }
 
-void CountlyConnectionQueue::addToQueue(__String* data) {
-  dataQueue.pushBack(data);
+void CountlyConnectionQueue::addToQueue(__String* data, bool insert) {
+  time_t timeStamp =  time(NULL);
+  addConnection(data, timeStamp, insert);
+  CountlyDBManager::sharedInstance()->insertUrl(timeStamp, data->getCString());
+}
+
+void CountlyConnectionQueue::addConnection(__String* data, time_t timeStamp, bool insert) {
+  CountlyConnection *connection = new CountlyConnection(timeStamp, data);
+  if(insert) {
+    dataQueue.insert(0, connection);
+  }
+  else {
+    dataQueue.pushBack(connection);
+  }
+  connection->release();
+}
+
+void CountlyConnectionQueue::removeFromQueue() {  
+  CountlyConnection *connection = dataQueue.at(0);
+  time_t time = connection->getTime();
+  CountlyDBManager::sharedInstance()->removeUrl(time);
+  dataQueue.erase(0);
 }
 
 
 void CountlyConnectionQueue::beginSession() {
-  __String *data = __String::createWithFormat("app_key=%s&device_id=%s&timestamp=%ld&sdk_version=%s&begin_session=1&metrics=%s",this->appKey.c_str(),CountlyDeviceInfoModel::getDeviceId(),time(NULL),COUNTLY_SDK_VERSION,CountlyDeviceInfoModel::metrics());
+  const char* metrics =  CountlyDeviceInfoModel::metrics();
+  __String *data = __String::createWithFormat("app_key=%s&device_id=%s&timestamp=%ld&sdk_version=%s&begin_session=1&metrics=%s",this->appKey.c_str(),CountlyDeviceInfoModel::getDeviceId(),time(NULL),COUNTLY_SDK_VERSION,metrics);
   
-  addToQueue(data);
+  addToQueue(data, true);
+  isSessionBegin = true;
   tick();
 }
 
@@ -168,7 +192,7 @@ void CountlyConnectionQueue::reportCrash(string error, string reason, bool nonfa
   writer.EndObject();
   
   
-  log("Crash Log >>>> %s",s.GetString());
+//  log("Crash Log >>>> %s",s.GetString());
   
   string strEncode = CountlyUtils::urlencode(s.GetString());
   
@@ -186,12 +210,14 @@ void CountlyConnectionQueue::recordEvents(string events) {
 }
 
 void CountlyConnectionQueue::tick() {
-  if (!dataQueue.size() || bgTask) {
+  if (!dataQueue.size() || bgTask || !isSessionBegin) {
     return;
   }
   
   bgTask = true;
-  __String *request = dataQueue.at(0);
+  CountlyConnection *connection = dataQueue.at(0);
+  __String *request = connection->getUrl();
+  
   httpRequestUrl(request);
 }
 
@@ -201,16 +227,49 @@ void CountlyConnectionQueue::httpRequestUrl(__String *url, bool isImmidiate) {
   HttpRequest* request = new (std::nothrow) HttpRequest();
   request->setUrl(urlStr->getCString());
   request->setRequestType(HttpRequest::Type::GET);
-  std::vector<std::string> headers;
-  headers.push_back("Content-Type: application/json; charset=utf-8");
-  request->setHeaders(headers);
-  
-//  // write the post data
-//  const char* postData = "visitor=cocos2d&TestSuite=Extensions Test/NetworkTest";
-//  request->setRequestData(postData, strlen(postData));
   request->setTag("POST");
-  if(isImmidiate) {
+  
+  string str = urlStr->getCString();
+  if (str.find(kCLYUserPicturePath) != std::string::npos) {
     
+    string picPath = UserDefault::getInstance()->getStringForKey(kCLYUserPicturePath);
+    Data data = FileUtils::getInstance()->getDataFromFile(picPath);
+    
+    const char* fileBinary = (const char*) data.getBytes();
+    
+    std::string boundary = "--1473780983123";
+    std::vector<std::string> headers;
+    headers.push_back("Content-Type: multipart/form-data; boundary="+boundary);
+    request->setHeaders(headers);
+    
+    std::string body;
+    string CRLF = "\r\n";
+    
+    // now we add the file
+    body.append("--" + boundary + CRLF);
+    body.append("Content-Disposition: form-data; name=\"binaryFile\"; filename=\"temp.png\"");
+    body.append(CRLF);
+    
+    body.append("Content-Type: image/png");
+    body.append(CRLF);
+    
+    body.append("Content-Transfer-Encoding: binary");
+    body.append(CRLF);
+    body.append(CRLF);
+    
+    body = body + std::string(fileBinary, data.getSize());
+    body.append(CRLF);
+    
+    body.append("--" +boundary+"--");
+    body.append(CRLF);
+    
+    log("%s",body.c_str());
+    
+    request->setRequestData(body.data(), body.size());
+
+  }
+  
+  if(isImmidiate) {
     HttpClient::getInstance()->sendImmediate(request);
   }
   else {
@@ -221,9 +280,33 @@ void CountlyConnectionQueue::httpRequestUrl(__String *url, bool isImmidiate) {
 
 }
 
+
+void CountlyConnectionQueue::setStartedWithTest(bool pStartedWithTest) {
+  startedWithTest = pStartedWithTest;
+  
+}
+
+void CountlyConnectionQueue::tokenSession(string token, string tokenOS)
+{
+  // Test modes: 0 = production mode, 1 = development build, 2 = Ad Hoc build
+  int testMode;
+#ifndef __OPTIMIZE__
+  testMode = 2;
+#else
+  testMode = this.startedWithTest ? 2 : 0;
+#endif
+
+  __String *data = __String::createWithFormat("app_key=%s&device_id=%s&timestamp=%ld&sdk_version=%s&token_session=1&%s=%s&test_mode=%d",this->appKey.c_str(),CountlyDeviceInfoModel::getDeviceId(),time(NULL),COUNTLY_SDK_VERSION, tokenOS.c_str(),token.c_str(),testMode);
+  
+  log("<<<<<<<< %s >>>>>>>>>", data->getCString());
+  addToQueue(data);
+  tick();
+
+}
+
 void CountlyConnectionQueue::onHttpRequestCompleted(HttpClient *sender, HttpResponse *response)
 {
-  
+  bgTask = false;
   if (!response)
   {
     return;
@@ -265,8 +348,7 @@ void CountlyConnectionQueue::onHttpRequestCompleted(HttpClient *sender, HttpResp
     log("request ref count not 2, is %d", response->getHttpRequest()->getReferenceCount());
   }
   
-  dataQueue.erase(0);
-  bgTask = false;
+  removeFromQueue();
   tick();
 }
 

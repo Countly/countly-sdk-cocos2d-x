@@ -3,14 +3,10 @@ package org.count.ly.sdk;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.json.JSONObject;
-
+import org.cocos2dx.lib.Cocos2dxHelper;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -99,7 +95,7 @@ public class CrashDetail {
      * Returns the current device openGL version.
      */
     static float getOpenGL() {
-        PackageManager packageManager = CountlyHelper.me.getPackageManager();
+        PackageManager packageManager = Cocos2dxHelper.getActivity().getPackageManager();
         FeatureInfo[] featureInfos = packageManager.getSystemAvailableFeatures();
         if (featureInfos != null && featureInfos.length > 0) {
             for (FeatureInfo featureInfo : featureInfos) {
@@ -121,7 +117,7 @@ public class CrashDetail {
      */
     static long getRamCurrent() {
         ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
-        ActivityManager activityManager = (ActivityManager) CountlyHelper.me.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager activityManager = (ActivityManager) Cocos2dxHelper.getActivity().getSystemService(Context.ACTIVITY_SERVICE);
         activityManager.getMemoryInfo(mi);
 
         long currentRam = getTotalRAM() - (mi.availMem / 1048576L);
@@ -175,7 +171,7 @@ public class CrashDetail {
     static int getBatteryLevel() {
         try {
 
-            Intent batteryIntent = CountlyHelper.me.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+            Intent batteryIntent = Cocos2dxHelper.getActivity().registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
             int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
             int scale = batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
@@ -198,7 +194,7 @@ public class CrashDetail {
      * Returns the current device orientation.
      */
     static String getOrientation() {
-        int orientation = CountlyHelper.me.getResources().getConfiguration().orientation;
+        int orientation = Cocos2dxHelper.getActivity().getResources().getConfiguration().orientation;
         switch(orientation)
         {
             case  Configuration.ORIENTATION_LANDSCAPE:
@@ -231,7 +227,7 @@ public class CrashDetail {
      */
     static long isOnline() {
         try {
-            ConnectivityManager conMgr = (ConnectivityManager) CountlyHelper.me.getSystemService(Context.CONNECTIVITY_SERVICE);
+            ConnectivityManager conMgr = (ConnectivityManager) Cocos2dxHelper.getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
             if (conMgr != null && conMgr.getActiveNetworkInfo() != null
                     && conMgr.getActiveNetworkInfo().isAvailable()
                     && conMgr.getActiveNetworkInfo().isConnected()) {
@@ -252,7 +248,7 @@ public class CrashDetail {
      * Checks if device is muted.
      */
     static boolean isMuted() {
-        AudioManager audio = (AudioManager) CountlyHelper.me.getSystemService(Context.AUDIO_SERVICE);
+        AudioManager audio = (AudioManager) Cocos2dxHelper.getActivity().getSystemService(Context.AUDIO_SERVICE);
         switch( audio.getRingerMode() ){
             case AudioManager.RINGER_MODE_SILENT:
                 return true;

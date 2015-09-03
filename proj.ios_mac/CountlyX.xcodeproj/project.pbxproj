@@ -18,6 +18,9 @@
 		39165DC41B677164002BE5D4 /* CountlyExceptionHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39165DC31B677164002BE5D4 /* CountlyExceptionHandler.mm */; };
 		391CAAB91B6CB8D9002F8F4A /* CountlyCrashDetail.mm in Sources */ = {isa = PBXBuildFile; fileRef = 391CAAB81B6CB8D9002F8F4A /* CountlyCrashDetail.mm */; };
 		391ECAD21B77260B00FF7CDC /* CountlyBackTrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 391ECAD01B77260B00FF7CDC /* CountlyBackTrace.cpp */; };
+		391F5C7F1B8EFF660095F6CC /* CountlyDBManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 391F5C7D1B8EFF660095F6CC /* CountlyDBManager.cpp */; };
+		391F5C841B8F44680095F6CC /* CountlyConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 391F5C821B8F44680095F6CC /* CountlyConnection.cpp */; };
+		394A49441B90D0A6007B9895 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 394A49411B90D0A6007B9895 /* sqlite3.c */; };
 		3950D4891B7CBB5D00DD58AB /* CountlyUserDetails.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3950D4871B7CBB5D00DD58AB /* CountlyUserDetails.cpp */; };
 		395BB9BC1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 395BB9BA1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp */; };
 		398C03741B4C20BC002BD576 /* Countly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398C03721B4C20BC002BD576 /* Countly.cpp */; };
@@ -25,6 +28,7 @@
 		39CFA2A71B4D34860075B08F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CFA2A51B4D33520075B08F /* CoreTelephony.framework */; };
 		39CFA2AA1B4D3BFC0075B08F /* CountlyUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39CFA2A81B4D3BFC0075B08F /* CountlyUtils.cpp */; };
 		39CFA2AD1B4D45080075B08F /* CountlyDeviceInfoModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39CFA2AB1B4D45080075B08F /* CountlyDeviceInfoModel.cpp */; };
+		39F43E661B837B1C0040988A /* CountlyMessaging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39F43E651B837B1C0040988A /* CountlyMessaging.mm */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -131,6 +135,14 @@
 		391CAAB81B6CB8D9002F8F4A /* CountlyCrashDetail.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyCrashDetail.mm; sourceTree = "<group>"; };
 		391ECAD01B77260B00FF7CDC /* CountlyBackTrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyBackTrace.cpp; sourceTree = "<group>"; };
 		391ECAD11B77260B00FF7CDC /* CountlyBackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyBackTrace.h; sourceTree = "<group>"; };
+		391F5C7D1B8EFF660095F6CC /* CountlyDBManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDBManager.cpp; sourceTree = "<group>"; };
+		391F5C7E1B8EFF660095F6CC /* CountlyDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDBManager.h; sourceTree = "<group>"; };
+		391F5C801B8F03110095F6CC /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.0.dylib; sourceTree = DEVELOPER_DIR; };
+		391F5C821B8F44680095F6CC /* CountlyConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyConnection.cpp; sourceTree = "<group>"; };
+		391F5C831B8F44680095F6CC /* CountlyConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnection.h; sourceTree = "<group>"; };
+		394A49411B90D0A6007B9895 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		394A49421B90D0A6007B9895 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		394A49431B90D0A6007B9895 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
 		3950D4871B7CBB5D00DD58AB /* CountlyUserDetails.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyUserDetails.cpp; sourceTree = "<group>"; };
 		3950D4881B7CBB5D00DD58AB /* CountlyUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUserDetails.h; sourceTree = "<group>"; };
 		395BB9BA1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyConnectionQueue.cpp; sourceTree = "<group>"; };
@@ -145,6 +157,8 @@
 		39CFA2A91B4D3BFC0075B08F /* CountlyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUtils.h; sourceTree = "<group>"; };
 		39CFA2AB1B4D45080075B08F /* CountlyDeviceInfoModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDeviceInfoModel.cpp; sourceTree = "<group>"; };
 		39CFA2AC1B4D45080075B08F /* CountlyDeviceInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDeviceInfoModel.h; sourceTree = "<group>"; };
+		39F43E641B837B1C0040988A /* CountlyMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyMessaging.h; sourceTree = "<group>"; };
+		39F43E651B837B1C0040988A /* CountlyMessaging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyMessaging.mm; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -291,6 +305,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				391F5C801B8F03110095F6CC /* libsqlite3.0.dylib */,
 				39CFA2A51B4D33520075B08F /* CoreTelephony.framework */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
 				52B47A461A53D09B004E4C60 /* Security.framework */,
@@ -313,9 +328,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		394A49401B90D0A6007B9895 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				394A49411B90D0A6007B9895 /* sqlite3.c */,
+				394A49421B90D0A6007B9895 /* sqlite3.h */,
+				394A49431B90D0A6007B9895 /* sqlite3ext.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		398C03711B4C2055002BD576 /* countly_sdk */ = {
 			isa = PBXGroup;
 			children = (
+				394A49401B90D0A6007B9895 /* lib */,
+				39F43E641B837B1C0040988A /* CountlyMessaging.h */,
+				39F43E651B837B1C0040988A /* CountlyMessaging.mm */,
 				398C03721B4C20BC002BD576 /* Countly.cpp */,
 				398C03731B4C20BC002BD576 /* Countly.h */,
 				39CFA2A11B4D17310075B08F /* CountlyDeviceInfo.h */,
@@ -340,6 +368,10 @@
 				391ECAD11B77260B00FF7CDC /* CountlyBackTrace.h */,
 				3950D4871B7CBB5D00DD58AB /* CountlyUserDetails.cpp */,
 				3950D4881B7CBB5D00DD58AB /* CountlyUserDetails.h */,
+				391F5C7D1B8EFF660095F6CC /* CountlyDBManager.cpp */,
+				391F5C7E1B8EFF660095F6CC /* CountlyDBManager.h */,
+				391F5C821B8F44680095F6CC /* CountlyConnection.cpp */,
+				391F5C831B8F44680095F6CC /* CountlyConnection.h */,
 			);
 			path = countly_sdk;
 			sourceTree = "<group>";
@@ -465,7 +497,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = 29FZW3UCD7;
 					};
 				};
 			};
@@ -563,11 +595,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				391F5C841B8F44680095F6CC /* CountlyConnection.cpp in Sources */,
 				391CAAB91B6CB8D9002F8F4A /* CountlyCrashDetail.mm in Sources */,
 				39CFA2AA1B4D3BFC0075B08F /* CountlyUtils.cpp in Sources */,
 				390127801B55242C0041FC56 /* CountlyEvent.cpp in Sources */,
 				391ECAD21B77260B00FF7CDC /* CountlyBackTrace.cpp in Sources */,
+				391F5C7F1B8EFF660095F6CC /* CountlyDBManager.cpp in Sources */,
 				39165DC41B677164002BE5D4 /* CountlyExceptionHandler.mm in Sources */,
+				39F43E661B837B1C0040988A /* CountlyMessaging.mm in Sources */,
 				39CFA2A41B4D179C0075B08F /* CountlyDeviceInfo.mm in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				3901277D1B5510190041FC56 /* CountlyDB.cpp in Sources */,
@@ -579,6 +614,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				394A49441B90D0A6007B9895 /* sqlite3.c in Sources */,
 				39CFA2AD1B4D45080075B08F /* CountlyDeviceInfoModel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,7 +649,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.demos.app";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.demos.app";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -638,6 +675,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "38d001fd-2d1f-455b-b8fd-64e2dd0faf71";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -649,7 +687,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.demos.app";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.demos.app";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -672,6 +711,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "38d001fd-2d1f-455b-b8fd-64e2dd0faf71";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -748,6 +788,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.demos.app";
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -770,6 +811,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "38d001fd-2d1f-455b-b8fd-64e2dd0faf71";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -779,6 +821,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.demos.app";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -799,6 +842,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "38d001fd-2d1f-455b-b8fd-64e2dd0faf71";
 				SDKROOT = macosx;
 				VALIDATE_PRODUCT = YES;
 			};

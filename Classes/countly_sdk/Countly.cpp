@@ -18,10 +18,14 @@
 #include "CountlyDeviceInfoModel.h"
 #include "CountlyConnectionQueue.h"
 #include "CountlyExceptionHandler.h"
-
+#include "CountlyDBManager.h"
 
 #define COUNTLY_EVENT_SEND_THRESHOLD 10
 #define COUNTLY_DEFAULT_UPDATE_INTERVAL 60.0
+
+
+#define EVENT_OPEN "[CLY]_push_open"
+#define EVENT_ACTION "[CLY]_push_action"
 
 const char *Countly::COUNTLY_EVENT_ENTER_BACKGROUND = "didEnterBackgroundCallBack";
 const char *Countly::COUNTLY_EVENT_ENTER_FORGROUND = "willEnterForegroundCallBack";
@@ -29,6 +33,7 @@ const char *Countly::COUNTLY_EVENT_ENTER_FORGROUND = "willEnterForegroundCallBac
 USING_NS_CC;
 static Countly * instance = NULL;
 Countly::Countly () {
+  isSuspended = false;
   startTime = time(NULL);
   auto dispatcher = Director::getInstance()->getEventDispatcher();
   
@@ -48,13 +53,35 @@ void Countly::willEnterForegroundCallBack(cocos2d::EventCustom *event) {
   this->resume();
 }
 
+
 Countly* Countly::sharedInstance () {
   if (!instance) {
     instance = new Countly();
     instance->eventQueue = new CountlyEventQueue();
     CountlyDeviceInfoModel::populateModel();
+    CountlyDBManager::sharedInstance()->createDB();
   }
   return instance;
+}
+
+void Countly::androidNotifcations() {
+  int openCount = UserDefault::getInstance()->getIntegerForKey(EVENT_OPEN, 0);
+  __String *messageKey;
+  for (int i = 1; i <= openCount; i++) {
+    messageKey = __String::createWithFormat("%s_%d",EVENT_OPEN,i);
+    string messageId =  UserDefault::getInstance()->getStringForKey(messageKey->getCString());
+    recordPushEvent(EVENT_OPEN, messageId);
+  }
+  
+  int actionCount = UserDefault::getInstance()->getIntegerForKey(EVENT_ACTION, 0);
+  for (int i = 1; i <= actionCount; i++) {
+    messageKey = __String::createWithFormat("%s_%d",EVENT_ACTION,i);
+    string messageId =  UserDefault::getInstance()->getStringForKey(messageKey->getCString());
+    recordPushEvent(EVENT_ACTION, messageId);
+  }
+  
+  UserDefault::getInstance()->setIntegerForKey(EVENT_ACTION, 0);
+  UserDefault::getInstance()->setIntegerForKey(EVENT_OPEN, 0);
 }
 
 void Countly::start(string appKey, string appHost) {
@@ -93,6 +120,7 @@ void Countly::startCrashReporting() {
 void Countly::startCrashReportingWithSegments(Map<string, __String*> custom) {
   CountlyConnectionQueue::sharedInstance()->setCrashCustom(custom);
   startCrashReporting();
+  
 }
 
 void Countly::startOnCloudWithAppKey(string appKey) {
@@ -154,6 +182,12 @@ void Countly::recordEvent(string pKey, float pSum, int pCount) {
   eventQueue->recordEvent(pKey, pCount, pSum);
   checkEventThreshold();
 }
+
+void Countly::recordPushEvent(string pKey, string messageId, int pCount) {
+  Map<std::string, __String*> data;
+  data.insert("i", __String::create(messageId));
+  recordEvent(pKey, data, pCount);
+}
 void Countly::recordEvent(string pKey, Map<string, __String*> pSegmentation, int pCount) {
   eventQueue->recordEvent(pKey, pCount, pSegmentation);
   checkEventThreshold();
@@ -161,6 +195,10 @@ void Countly::recordEvent(string pKey, Map<string, __String*> pSegmentation, int
 void Countly::recordEvent(string pKey, Map<string, __String*> pSegmentation, float pSum, int pCount) {
   eventQueue->recordEvent(pKey, pCount, pSum, pSegmentation);
   checkEventThreshold();
+}
+
+void Countly::addDBEvent(string pKey, Map<string, __String*> pSegmentation, float pSum, time_t time, int pCount) {
+  eventQueue->addDBEvent(pKey, pCount, pSum, pSegmentation, time);
 }
 
 

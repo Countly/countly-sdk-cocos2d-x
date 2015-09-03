@@ -8,6 +8,7 @@
 
 #include "CountlyEventQueue.h"
 #include "CountlyUtils.h"
+#include "CountlyDBManager.h"
 #include "CountlyConnectionQueue.h"
 #include "external/json/writer.h"
 #include "external/json/document.h"
@@ -15,10 +16,27 @@
 
 void CountlyEventQueue::addEvent(CountlyEvent* event) {
   eventQueue.pushBack(event);
+  CountlyDBManager::sharedInstance()->insertEvent(event);
+  event->release();
+}
+
+void CountlyEventQueue::addDBEvent(CountlyEvent* event) {
+  eventQueue.pushBack(event);
+  event->release();
+}
+
+
+void CountlyEventQueue::upateEvent(CountlyEvent *event) {
+  CountlyDBManager::sharedInstance()->updateEvent(event);
 }
 
 void CountlyEventQueue::removeEvent(CountlyEvent *event) {
   eventQueue.eraseObject(event);
+}
+
+void CountlyEventQueue::removeAllEvents() {
+  CountlyDBManager::sharedInstance()->removeAllEvents();
+  eventQueue.clear();
 }
 
 int CountlyEventQueue::eventCount() {
@@ -34,6 +52,7 @@ void CountlyEventQueue::recordEvent(string pKey, int pCount) {
   {
     if(event->getKey() == pKey) {
       event->addCount(pCount);
+      upateEvent(event);
       return;
     }
   }
@@ -49,6 +68,7 @@ void CountlyEventQueue::recordEvent(string pKey, int pCount, float pSum) {
       event->addSum(pSum);
       event->addCount(pCount);
       event->addjustTime(time(NULL));
+      upateEvent(event);
       return;
     }
   }
@@ -65,6 +85,7 @@ void CountlyEventQueue::recordEvent(string pKey, int pCount, Map<string, __Strin
     if(event->getKey() == pKey && isSegEqual) {
       event->addCount(pCount);
       event->addjustTime(time(NULL));
+      upateEvent(event);
       return;
     }
   }
@@ -81,12 +102,20 @@ void CountlyEventQueue::recordEvent(string pKey, int pCount, float pSum, Map<str
       event->addSum(pSum);
       event->addCount(pCount);
       event->addjustTime(time(NULL));
+      upateEvent(event);
       return;
     }
   }
   CountlyEvent *event = new CountlyEvent();
   event->populateEvent(pKey, pCount, pSum, pSegmentation);
   addEvent(event);
+}
+
+void CountlyEventQueue::addDBEvent(string pKey, int pCount, float pSum, Map<string, __String*> pSegmentation, time_t time) {
+  
+  CountlyEvent *event = new CountlyEvent();
+  event->populateDBEvent(pKey, pCount, pSum, pSegmentation, time);
+  addDBEvent(event);
 }
 
 string CountlyEventQueue::eventsUrl() {
@@ -99,7 +128,7 @@ string CountlyEventQueue::eventsUrl() {
     event->serializedData(writer);
   }
   writer.EndArray();
-  eventQueue.clear();
+  removeAllEvents();
   log("%s",s.GetString());
   
   string strEncode = CountlyUtils::urlencode(s.GetString());

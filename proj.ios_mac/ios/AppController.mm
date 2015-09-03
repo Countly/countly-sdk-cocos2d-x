@@ -27,6 +27,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#include "CountlyMessaging.h"
 
 @implementation AppController
 
@@ -85,10 +86,36 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     app->run();
+  
+  [[CountlyMessaging sharedInstance] startWithTestMessagingUsing:@"0d0c6810152171da71606e22123dab15c99260ca" withHost:@"https://try.count.ly" andOptions:launchOptions];
+  
+  if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:[[CountlyMessaging sharedInstance] countlyNotificationCategories]];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+  } else {
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+  }
 
     return YES;
 }
 
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+  [application registerForRemoteNotifications];
+}
+
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [[CountlyMessaging sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [[CountlyMessaging sharedInstance] didFailToRegisterForRemoteNotifications];
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  if (![[CountlyMessaging sharedInstance] handleRemoteNotification:userInfo]) {
+    
+  }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*

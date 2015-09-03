@@ -20,10 +20,14 @@ CountlyUserDetails* CountlyUserDetails::sharedInstance () {
 
 void CountlyUserDetails::setUserData(Map<string, ::__String *> pUserMap) {
   userMap = pUserMap;
+  auto value = userMap.at(kCLYUserPicturePath);
+  if (value != nullptr) {
+    UserDefault::getInstance()->setStringForKey(kCLYUserPicturePath, value->getCString());
+  }
 }
 
 void CountlyUserDetails::setUserData(Map<string, __String*> pUserMap, Map<string, __String*> pUserCustom) {
-  userMap = pUserMap;
+  setUserData(pUserMap);
   userCustom = pUserCustom;
 }
 

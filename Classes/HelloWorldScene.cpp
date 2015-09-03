@@ -147,15 +147,21 @@ void HelloWorld::testCountlyEvents() {
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
   
+  
+  
+  std::string path = FileUtils::getInstance()->fullPathForFilename("HelloWorld.png");
+  
+  
   Map<std::string, __String*> data;
-  data.insert(kCLYUserName, __String::create("Junaid"));
+  data.insert(kCLYUserName, __String::create("Junaid Akram"));
   data.insert(kCLYUserUsername, __String::create("ijunaid"));
   data.insert(kCLYUserEmail, __String::create("mjunaid.akram@yahoo.com"));
   data.insert(kCLYUserOrganization, __String::create("Countly"));
   data.insert(kCLYUserPhone, __String::create("+923349963029"));
   data.insert(kCLYUserGender, __String::create("M"));
-  data.insert(kCLYUserPicture, __String::create("https://upload.wikimedia.org/wikipedia/commons/4/4f/Polistes_May_2013-2.jpg"));
-//  data.insert(kCLYUserPicturePath, __String::create("ijunaid"));
+  data.insert(kCLYUserPicturePath, __String::create(path));
+//  data.insert(kCLYUserPicture, __String::create("https://upload.wikimedia.org/wikipedia/commons/4/4f/Polistes_May_2013-2.jpg"));
+//  data.insert(kCLYUserPicture, __String::create("null"));
   data.insert(kCLYUserBirthYear, __String::create("1987"));
   
   

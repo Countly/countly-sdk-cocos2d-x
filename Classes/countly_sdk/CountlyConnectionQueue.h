@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "CountlyConnection.h"
 #include "extensions/cocos-ext.h"
 #include "network/HttpClient.h"
 
@@ -20,12 +21,15 @@ using namespace std;
 
 class CountlyConnectionQueue {
 private:
+  bool isSessionBegin;
   bool bgTask;
   string appKey;
   string appHost;
   bool startedWithTest;
   CountlyConnectionQueue();
-  Vector<__String*> dataQueue;
+  
+  Vector<CountlyConnection*> dataQueue;
+  Vector<__String*> dataQueueOld;
   Map<string, __String*> crashCustom;
 public:
   __String *locationString;
@@ -38,7 +42,11 @@ public:
   void sendUserDetails();
   void setAppKey(string key);
   void setAppHost(string host);
-  void addToQueue(__String* data);
+  void tokenSession(string token, string tokenOS);
+  void setStartedWithTest(bool pStartedWithTest);
+  void addToQueue(__String* data, bool insert = false);
+  void addConnection(__String* data, time_t timeStamp, bool insert = false);
+  void removeFromQueue();
   void recordEvents(string events);
   void httpRequestUrl(__String *url, bool isImmediate = false);
   void reportCrash(string crashReport);

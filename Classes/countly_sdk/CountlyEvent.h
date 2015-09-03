@@ -26,6 +26,9 @@ private:
   Map<string, __String*> segmentation;
 public:
   string getKey();
+  int getCount();
+  float getSum();
+  time_t getTime();
   void addSum(float pSum);
   void addCount(int pCount);
   void addjustTime(time_t pTimestamp);
@@ -37,6 +40,7 @@ public:
   void serializedData(rapidjson::Writer<rapidjson::StringBuffer> &writer);
   void populateEvent(string pKey, int pCount, Map<string, __String*> pSegmentation);
   void populateEvent(string pKey, int pCount, float pSum, Map<string, __String*> pSegmentation);
+  void populateDBEvent(string pKey, int pCount, float pSum, Map<string, __String*> pSegmentation, time_t time);
 };
 
 #endif /* defined(__CountlyX__CountlyEvent__) */

@@ -23,18 +23,57 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-****************************************************************************/
+ ****************************************************************************/
 package org.cocos2dx.cpp;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
-import org.count.ly.sdk.CountlyHelper;
+import org.count.ly.sdk.messaging.CountlyMessaging;
+import org.count.ly.sdk.messaging.Message;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 
 public class AppActivity extends Cocos2dxActivity {
-	protected void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);	
-		CountlyHelper.init(this);
+
+	private static String SENDER_ID = "138246960183";
+	private BroadcastReceiver messageReceiver;
+
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		CountlyMessaging.init(this, AppActivity.class, SENDER_ID, null);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		/**
+		 * Register for broadcast action if you need to be notified when Countly
+		 * message received
+		 */
+		messageReceiver = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				Message message = intent
+						.getParcelableExtra(CountlyMessaging.BROADCAST_RECEIVER_ACTION_MESSAGE);
+				Log.i("CountlyActivity",
+						"Got a message with data: " + message.getData());
+			}
+		};
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(CountlyMessaging
+				.getBroadcastAction(getApplicationContext()));
+		registerReceiver(messageReceiver, filter);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		unregisterReceiver(messageReceiver);
 	}
 
 }

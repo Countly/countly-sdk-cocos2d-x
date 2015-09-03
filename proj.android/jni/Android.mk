@@ -23,7 +23,10 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/countly_sdk/CountlyExceptionHandler.cpp \
                    ../../Classes/countly_sdk/CountlyCrashDetail.cpp \
                    ../../Classes/countly_sdk/CountlyBackTrace.cpp \
-                   ../../Classes/countly_sdk/CountlyUserDetails.cpp
+                   ../../Classes/countly_sdk/CountlyUserDetails.cpp \
+                   ../../Classes/countly_sdk/CountlyDBManager.cpp \
+                   ../../Classes/countly_sdk/CountlyConnection.cpp \
+                   ../../Classes/countly_sdk/lib/sqlite3.c
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/countly_sdk

@@ -6,6 +6,7 @@
 //
 //
 
+#include "Countly.h"
 #include "CountlyDeviceInfo.h"
 #include "CountlyConnectionQueue.h"
 #include "CountlyDeviceInfo.h"
@@ -20,19 +21,45 @@ USING_NS_CC;
 extern "C"
 {
   JNIEXPORT jstring JNICALL Java_org_count_ly_sdk_CountlyHelper_reportCrash(JNIEnv* env, jobject thiz, jstring error, jstring reason, jboolean nonfatal);
+
+  JNIEXPORT jstring JNICALL Java_org_count_ly_sdk_CountlyHelper_onRegistrationId(JNIEnv* env, jobject thiz, jstring registrationId);
+
+  JNIEXPORT jstring JNICALL Java_org_count_ly_sdk_CountlyHelper_recordPushEvent(JNIEnv* env, jobject thiz, jstring key, jstring messageId);
 };
 
 JNIEXPORT jstring JNICALL Java_org_count_ly_sdk_CountlyHelper_reportCrash(JNIEnv* env, jobject thiz, jstring myError, jstring myReason, jboolean myNonfatal)
 {
-  
+
   const char* error = env->GetStringUTFChars(myError, NULL);
   const char* reason = env->GetStringUTFChars(myReason, NULL);
   bool nonfatal = myNonfatal;
-  
+
   CountlyConnectionQueue::sharedInstance()->reportCrash(error, reason, nonfatal);
-  
+
   env->ReleaseStringUTFChars(myError, error);
   env->ReleaseStringUTFChars(myReason, reason);
+}
+
+JNIEXPORT jstring JNICALL Java_org_count_ly_sdk_CountlyHelper_onRegistrationId(JNIEnv* env, jobject thiz, jstring mRegistrationId)
+{
+
+  const char* registrationId = env->GetStringUTFChars(mRegistrationId, NULL);
+
+  CountlyConnectionQueue::sharedInstance()->tokenSession(registrationId, "android_token");
+
+  env->ReleaseStringUTFChars(mRegistrationId, registrationId);
+}
+
+JNIEXPORT jstring JNICALL Java_org_count_ly_sdk_CountlyHelper_recordPushEvent(JNIEnv* env, jobject thiz, jstring mKey, jstring mMessageId)
+{
+
+  const char* key = env->GetStringUTFChars(mKey, NULL);
+  const char* messageId = env->GetStringUTFChars(mMessageId, NULL);
+
+  Countly::sharedInstance()->recordPushEvent(key, messageId, 1);
+
+  env->ReleaseStringUTFChars(mKey, key);
+  env->ReleaseStringUTFChars(mMessageId, messageId);
 }
 
 const char* CountlyDeviceInfo::locale() {
@@ -88,9 +115,9 @@ const char* CountlyDeviceInfo::getDeviceId()
     jstr = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
   }
   methodInfo.env->DeleteLocalRef(methodInfo.classID);
-  
+
   const char* deviceSysVers = methodInfo.env->GetStringUTFChars(jstr, NULL);
-  
+
   return deviceSysVers;
 }
 
@@ -103,9 +130,9 @@ const char* CountlyDeviceInfo::getUserAgent()
     jstr = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
   }
   methodInfo.env->DeleteLocalRef(methodInfo.classID);
-  
+
   const char* userAgent = methodInfo.env->GetStringUTFChars(jstr, NULL);
-  
+
   return userAgent;
 }
 
@@ -118,9 +145,9 @@ const char* CountlyDeviceInfo::getDeviceModel()
     jstr = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
   }
   methodInfo.env->DeleteLocalRef(methodInfo.classID);
-  
+
   const char* deviceModel = methodInfo.env->GetStringUTFChars(jstr, NULL);
-  
+
   return deviceModel;
 }
 
@@ -133,9 +160,9 @@ const char* CountlyDeviceInfo::getCarrierName()
     jstr = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
   }
   methodInfo.env->DeleteLocalRef(methodInfo.classID);
-  
+
   const char* carrierName = methodInfo.env->GetStringUTFChars(jstr, NULL);
-  
+
   return carrierName;
 }
 
@@ -149,9 +176,9 @@ const char* CountlyDeviceInfo::getDeviceSystemName()
     jstr = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
   }
   methodInfo.env->DeleteLocalRef(methodInfo.classID);
-  
+
   const char* deviceSysName = methodInfo.env->GetStringUTFChars(jstr, NULL);
-  
+
   return deviceSysName;
 }
 
@@ -164,9 +191,9 @@ const char* CountlyDeviceInfo::getDeviceSystemVersion()
     jstr = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
   }
   methodInfo.env->DeleteLocalRef(methodInfo.classID);
-  
+
   const char* deviceSysVers = methodInfo.env->GetStringUTFChars(jstr, NULL);
-  
+
   return deviceSysVers;
 }
 
