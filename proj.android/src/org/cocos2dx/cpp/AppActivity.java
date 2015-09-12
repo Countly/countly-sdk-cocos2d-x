@@ -26,54 +26,19 @@ THE SOFTWARE.
  ****************************************************************************/
 package org.cocos2dx.cpp;
 
-import org.cocos2dx.lib.Cocos2dxActivity;
-import org.count.ly.sdk.messaging.CountlyMessaging;
-import org.count.ly.sdk.messaging.Message;
+import org.messaging.countly.sdk.CountlyCocos2dxActivity;
+import org.messaging.countly.sdk.CountlyMessaging;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 
-public class AppActivity extends Cocos2dxActivity {
+
+public class AppActivity extends CountlyCocos2dxActivity {
 
 	private static String SENDER_ID = "138246960183";
-	private BroadcastReceiver messageReceiver;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		CountlyMessaging.init(this, AppActivity.class, SENDER_ID, null);
+		CountlyMessaging.init(this, AppActivity.class, SENDER_ID,CountlyMessaging.CountlyMessagingMode.TEST,  null);
 	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-
-		/**
-		 * Register for broadcast action if you need to be notified when Countly
-		 * message received
-		 */
-		messageReceiver = new BroadcastReceiver() {
-			@Override
-			public void onReceive(Context context, Intent intent) {
-				Message message = intent
-						.getParcelableExtra(CountlyMessaging.BROADCAST_RECEIVER_ACTION_MESSAGE);
-				Log.i("CountlyActivity",
-						"Got a message with data: " + message.getData());
-			}
-		};
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(CountlyMessaging
-				.getBroadcastAction(getApplicationContext()));
-		registerReceiver(messageReceiver, filter);
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		unregisterReceiver(messageReceiver);
-	}
-
+	
 }

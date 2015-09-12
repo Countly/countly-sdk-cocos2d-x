@@ -13,23 +13,24 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/HelloWorldScene.cpp \
-                   ../../Classes/countly_sdk/Countly.cpp \
-                   ../../Classes/countly_sdk/CountlyEvent.cpp \
-                   ../../Classes/countly_sdk/CountlyUtils.cpp \
-                   ../../Classes/countly_sdk/CountlyDeviceInfo.cpp \
-                   ../../Classes/countly_sdk/CountlyEventQueue.cpp \
-                   ../../Classes/countly_sdk/CountlyDeviceInfoModel.cpp \
-                   ../../Classes/countly_sdk/CountlyConnectionQueue.cpp \
-                   ../../Classes/countly_sdk/CountlyExceptionHandler.cpp \
-                   ../../Classes/countly_sdk/CountlyCrashDetail.cpp \
-                   ../../Classes/countly_sdk/CountlyBackTrace.cpp \
-                   ../../Classes/countly_sdk/CountlyUserDetails.cpp \
-                   ../../Classes/countly_sdk/CountlyDBManager.cpp \
-                   ../../Classes/countly_sdk/CountlyConnection.cpp \
-                   ../../Classes/countly_sdk/lib/sqlite3.c
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/Countly.cpp \
+                   ../../Classes/CountlySDK/CountlyAndroid/CountlyDeviceInfo.cpp \
+                   ../../Classes/CountlySDK/CountlyAndroid/CountlyCrashDetail.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyEvent.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyUtils.cpp \
+                   ../../Classes/CountlySDK/CountlyAndroid/CountlyExceptionHandler.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyBackTrace.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyDBManager.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyEventQueue.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyConnection.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyUserDetails.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyDeviceInfoModel.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/CountlyConnectionQueue.cpp \
+                   ../../Classes/CountlySDK/CountlyiOS/CountlyCplus/ThirdPartyLibs/Sqlite/sqlite3.c
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/countly_sdk
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/CountlySDK/CountlyAndroid
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/CountlySDK/CountlyiOS/CountlyCplus
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END

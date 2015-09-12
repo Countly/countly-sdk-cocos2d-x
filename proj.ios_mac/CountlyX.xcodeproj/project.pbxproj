@@ -12,23 +12,23 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		3901277D1B5510190041FC56 /* CountlyDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3901277B1B5510190041FC56 /* CountlyDB.cpp */; };
-		390127801B55242C0041FC56 /* CountlyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3901277E1B55242C0041FC56 /* CountlyEvent.cpp */; };
-		390127831B55267D0041FC56 /* CountlyEventQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390127811B55267D0041FC56 /* CountlyEventQueue.cpp */; };
-		39165DC41B677164002BE5D4 /* CountlyExceptionHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39165DC31B677164002BE5D4 /* CountlyExceptionHandler.mm */; };
-		391CAAB91B6CB8D9002F8F4A /* CountlyCrashDetail.mm in Sources */ = {isa = PBXBuildFile; fileRef = 391CAAB81B6CB8D9002F8F4A /* CountlyCrashDetail.mm */; };
-		391ECAD21B77260B00FF7CDC /* CountlyBackTrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 391ECAD01B77260B00FF7CDC /* CountlyBackTrace.cpp */; };
-		391F5C7F1B8EFF660095F6CC /* CountlyDBManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 391F5C7D1B8EFF660095F6CC /* CountlyDBManager.cpp */; };
-		391F5C841B8F44680095F6CC /* CountlyConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 391F5C821B8F44680095F6CC /* CountlyConnection.cpp */; };
-		394A49441B90D0A6007B9895 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 394A49411B90D0A6007B9895 /* sqlite3.c */; };
-		3950D4891B7CBB5D00DD58AB /* CountlyUserDetails.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3950D4871B7CBB5D00DD58AB /* CountlyUserDetails.cpp */; };
-		395BB9BC1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 395BB9BA1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp */; };
-		398C03741B4C20BC002BD576 /* Countly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398C03721B4C20BC002BD576 /* Countly.cpp */; };
-		39CFA2A41B4D179C0075B08F /* CountlyDeviceInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39CFA2A31B4D179C0075B08F /* CountlyDeviceInfo.mm */; };
+		39B485531BA0633E0083B4AF /* Countly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485301BA0633E0083B4AF /* Countly.cpp */; };
+		39B485541BA0633E0083B4AF /* CountlyBackTrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485321BA0633E0083B4AF /* CountlyBackTrace.cpp */; };
+		39B485551BA0633E0083B4AF /* CountlyConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485341BA0633E0083B4AF /* CountlyConnection.cpp */; };
+		39B485561BA0633E0083B4AF /* CountlyConnectionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485361BA0633E0083B4AF /* CountlyConnectionQueue.cpp */; };
+		39B485571BA0633E0083B4AF /* CountlyDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485391BA0633E0083B4AF /* CountlyDB.cpp */; };
+		39B485581BA0633E0083B4AF /* CountlyDBManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B4853B1BA0633E0083B4AF /* CountlyDBManager.cpp */; };
+		39B485591BA0633E0083B4AF /* CountlyDeviceInfoModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B4853E1BA0633E0083B4AF /* CountlyDeviceInfoModel.cpp */; };
+		39B4855A1BA0633E0083B4AF /* CountlyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485401BA0633E0083B4AF /* CountlyEvent.cpp */; };
+		39B4855B1BA0633E0083B4AF /* CountlyEventQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485421BA0633E0083B4AF /* CountlyEventQueue.cpp */; };
+		39B4855C1BA0633E0083B4AF /* CountlyUserDetails.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485461BA0633E0083B4AF /* CountlyUserDetails.cpp */; };
+		39B4855D1BA0633E0083B4AF /* CountlyUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39B485481BA0633E0083B4AF /* CountlyUtils.cpp */; };
+		39B4855E1BA0633E0083B4AF /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 39B4854C1BA0633E0083B4AF /* sqlite3.c */; };
+		39B4855F1BA0633E0083B4AF /* CountlyCrashDetail.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39B4854F1BA0633E0083B4AF /* CountlyCrashDetail.mm */; };
+		39B485601BA0633E0083B4AF /* CountlyDeviceInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39B485501BA0633E0083B4AF /* CountlyDeviceInfo.mm */; };
+		39B485611BA0633E0083B4AF /* CountlyExceptionHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39B485511BA0633E0083B4AF /* CountlyExceptionHandler.mm */; };
+		39B485621BA0633E0083B4AF /* CountlyMessaging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39B485521BA0633E0083B4AF /* CountlyMessaging.mm */; };
 		39CFA2A71B4D34860075B08F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CFA2A51B4D33520075B08F /* CoreTelephony.framework */; };
-		39CFA2AA1B4D3BFC0075B08F /* CountlyUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39CFA2A81B4D3BFC0075B08F /* CountlyUtils.cpp */; };
-		39CFA2AD1B4D45080075B08F /* CountlyDeviceInfoModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39CFA2AB1B4D45080075B08F /* CountlyDeviceInfoModel.cpp */; };
-		39F43E661B837B1C0040988A /* CountlyMessaging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39F43E651B837B1C0040988A /* CountlyMessaging.mm */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -124,41 +124,41 @@
 		1D6058910D05DD3D006BFB54 /* CountlyX-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CountlyX-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3901277B1B5510190041FC56 /* CountlyDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDB.cpp; sourceTree = "<group>"; };
-		3901277C1B5510190041FC56 /* CountlyDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDB.h; sourceTree = "<group>"; };
-		3901277E1B55242C0041FC56 /* CountlyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyEvent.cpp; sourceTree = "<group>"; };
-		3901277F1B55242C0041FC56 /* CountlyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEvent.h; sourceTree = "<group>"; };
-		390127811B55267D0041FC56 /* CountlyEventQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyEventQueue.cpp; sourceTree = "<group>"; };
-		390127821B55267D0041FC56 /* CountlyEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEventQueue.h; sourceTree = "<group>"; };
-		39165DC31B677164002BE5D4 /* CountlyExceptionHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyExceptionHandler.mm; sourceTree = "<group>"; };
-		391CAAB61B6CB8BD002F8F4A /* CountlyCrashDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyCrashDetail.h; sourceTree = "<group>"; };
-		391CAAB81B6CB8D9002F8F4A /* CountlyCrashDetail.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyCrashDetail.mm; sourceTree = "<group>"; };
-		391ECAD01B77260B00FF7CDC /* CountlyBackTrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyBackTrace.cpp; sourceTree = "<group>"; };
-		391ECAD11B77260B00FF7CDC /* CountlyBackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyBackTrace.h; sourceTree = "<group>"; };
-		391F5C7D1B8EFF660095F6CC /* CountlyDBManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDBManager.cpp; sourceTree = "<group>"; };
-		391F5C7E1B8EFF660095F6CC /* CountlyDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDBManager.h; sourceTree = "<group>"; };
 		391F5C801B8F03110095F6CC /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.0.dylib; sourceTree = DEVELOPER_DIR; };
-		391F5C821B8F44680095F6CC /* CountlyConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyConnection.cpp; sourceTree = "<group>"; };
-		391F5C831B8F44680095F6CC /* CountlyConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnection.h; sourceTree = "<group>"; };
-		394A49411B90D0A6007B9895 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
-		394A49421B90D0A6007B9895 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
-		394A49431B90D0A6007B9895 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
-		3950D4871B7CBB5D00DD58AB /* CountlyUserDetails.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyUserDetails.cpp; sourceTree = "<group>"; };
-		3950D4881B7CBB5D00DD58AB /* CountlyUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUserDetails.h; sourceTree = "<group>"; };
-		395BB9BA1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyConnectionQueue.cpp; sourceTree = "<group>"; };
-		395BB9BB1B53ACEE00F6A10D /* CountlyConnectionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnectionQueue.h; sourceTree = "<group>"; };
-		398C03721B4C20BC002BD576 /* Countly.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Countly.cpp; sourceTree = "<group>"; };
-		398C03731B4C20BC002BD576 /* Countly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Countly.h; sourceTree = "<group>"; };
-		39B197961B625B7F00BE0590 /* CountlyExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyExceptionHandler.h; sourceTree = "<group>"; };
-		39CFA2A11B4D17310075B08F /* CountlyDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDeviceInfo.h; sourceTree = "<group>"; };
-		39CFA2A31B4D179C0075B08F /* CountlyDeviceInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyDeviceInfo.mm; sourceTree = "<group>"; };
+		39B485301BA0633E0083B4AF /* Countly.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Countly.cpp; sourceTree = "<group>"; };
+		39B485311BA0633E0083B4AF /* Countly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Countly.h; sourceTree = "<group>"; };
+		39B485321BA0633E0083B4AF /* CountlyBackTrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyBackTrace.cpp; sourceTree = "<group>"; };
+		39B485331BA0633E0083B4AF /* CountlyBackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyBackTrace.h; sourceTree = "<group>"; };
+		39B485341BA0633E0083B4AF /* CountlyConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyConnection.cpp; sourceTree = "<group>"; };
+		39B485351BA0633E0083B4AF /* CountlyConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnection.h; sourceTree = "<group>"; };
+		39B485361BA0633E0083B4AF /* CountlyConnectionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyConnectionQueue.cpp; sourceTree = "<group>"; };
+		39B485371BA0633E0083B4AF /* CountlyConnectionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnectionQueue.h; sourceTree = "<group>"; };
+		39B485381BA0633E0083B4AF /* CountlyCrashDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyCrashDetail.h; sourceTree = "<group>"; };
+		39B485391BA0633E0083B4AF /* CountlyDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDB.cpp; sourceTree = "<group>"; };
+		39B4853A1BA0633E0083B4AF /* CountlyDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDB.h; sourceTree = "<group>"; };
+		39B4853B1BA0633E0083B4AF /* CountlyDBManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDBManager.cpp; sourceTree = "<group>"; };
+		39B4853C1BA0633E0083B4AF /* CountlyDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDBManager.h; sourceTree = "<group>"; };
+		39B4853D1BA0633E0083B4AF /* CountlyDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDeviceInfo.h; sourceTree = "<group>"; };
+		39B4853E1BA0633E0083B4AF /* CountlyDeviceInfoModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDeviceInfoModel.cpp; sourceTree = "<group>"; };
+		39B4853F1BA0633E0083B4AF /* CountlyDeviceInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDeviceInfoModel.h; sourceTree = "<group>"; };
+		39B485401BA0633E0083B4AF /* CountlyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyEvent.cpp; sourceTree = "<group>"; };
+		39B485411BA0633E0083B4AF /* CountlyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEvent.h; sourceTree = "<group>"; };
+		39B485421BA0633E0083B4AF /* CountlyEventQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyEventQueue.cpp; sourceTree = "<group>"; };
+		39B485431BA0633E0083B4AF /* CountlyEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEventQueue.h; sourceTree = "<group>"; };
+		39B485441BA0633E0083B4AF /* CountlyExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyExceptionHandler.h; sourceTree = "<group>"; };
+		39B485451BA0633E0083B4AF /* CountlyMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyMessaging.h; sourceTree = "<group>"; };
+		39B485461BA0633E0083B4AF /* CountlyUserDetails.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyUserDetails.cpp; sourceTree = "<group>"; };
+		39B485471BA0633E0083B4AF /* CountlyUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUserDetails.h; sourceTree = "<group>"; };
+		39B485481BA0633E0083B4AF /* CountlyUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyUtils.cpp; sourceTree = "<group>"; };
+		39B485491BA0633E0083B4AF /* CountlyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUtils.h; sourceTree = "<group>"; };
+		39B4854C1BA0633E0083B4AF /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		39B4854D1BA0633E0083B4AF /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		39B4854E1BA0633E0083B4AF /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
+		39B4854F1BA0633E0083B4AF /* CountlyCrashDetail.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyCrashDetail.mm; sourceTree = "<group>"; };
+		39B485501BA0633E0083B4AF /* CountlyDeviceInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyDeviceInfo.mm; sourceTree = "<group>"; };
+		39B485511BA0633E0083B4AF /* CountlyExceptionHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyExceptionHandler.mm; sourceTree = "<group>"; };
+		39B485521BA0633E0083B4AF /* CountlyMessaging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyMessaging.mm; sourceTree = "<group>"; };
 		39CFA2A51B4D33520075B08F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
-		39CFA2A81B4D3BFC0075B08F /* CountlyUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyUtils.cpp; sourceTree = "<group>"; };
-		39CFA2A91B4D3BFC0075B08F /* CountlyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUtils.h; sourceTree = "<group>"; };
-		39CFA2AB1B4D45080075B08F /* CountlyDeviceInfoModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountlyDeviceInfoModel.cpp; sourceTree = "<group>"; };
-		39CFA2AC1B4D45080075B08F /* CountlyDeviceInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDeviceInfoModel.h; sourceTree = "<group>"; };
-		39F43E641B837B1C0040988A /* CountlyMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyMessaging.h; sourceTree = "<group>"; };
-		39F43E651B837B1C0040988A /* CountlyMessaging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountlyMessaging.mm; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -328,52 +328,69 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		394A49401B90D0A6007B9895 /* lib */ = {
+		39B4852E1BA0633E0083B4AF /* CountlyiOS */ = {
 			isa = PBXGroup;
 			children = (
-				394A49411B90D0A6007B9895 /* sqlite3.c */,
-				394A49421B90D0A6007B9895 /* sqlite3.h */,
-				394A49431B90D0A6007B9895 /* sqlite3ext.h */,
+				39B4852F1BA0633E0083B4AF /* CountlyCplus */,
+				39B4854F1BA0633E0083B4AF /* CountlyCrashDetail.mm */,
+				39B485501BA0633E0083B4AF /* CountlyDeviceInfo.mm */,
+				39B485511BA0633E0083B4AF /* CountlyExceptionHandler.mm */,
+				39B485521BA0633E0083B4AF /* CountlyMessaging.mm */,
 			);
-			path = lib;
+			name = CountlyiOS;
+			path = CountlySDK/CountlyiOS;
 			sourceTree = "<group>";
 		};
-		398C03711B4C2055002BD576 /* countly_sdk */ = {
+		39B4852F1BA0633E0083B4AF /* CountlyCplus */ = {
 			isa = PBXGroup;
 			children = (
-				394A49401B90D0A6007B9895 /* lib */,
-				39F43E641B837B1C0040988A /* CountlyMessaging.h */,
-				39F43E651B837B1C0040988A /* CountlyMessaging.mm */,
-				398C03721B4C20BC002BD576 /* Countly.cpp */,
-				398C03731B4C20BC002BD576 /* Countly.h */,
-				39CFA2A11B4D17310075B08F /* CountlyDeviceInfo.h */,
-				39CFA2A31B4D179C0075B08F /* CountlyDeviceInfo.mm */,
-				39CFA2A81B4D3BFC0075B08F /* CountlyUtils.cpp */,
-				39CFA2A91B4D3BFC0075B08F /* CountlyUtils.h */,
-				39CFA2AB1B4D45080075B08F /* CountlyDeviceInfoModel.cpp */,
-				39CFA2AC1B4D45080075B08F /* CountlyDeviceInfoModel.h */,
-				395BB9BA1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp */,
-				395BB9BB1B53ACEE00F6A10D /* CountlyConnectionQueue.h */,
-				3901277B1B5510190041FC56 /* CountlyDB.cpp */,
-				3901277C1B5510190041FC56 /* CountlyDB.h */,
-				3901277E1B55242C0041FC56 /* CountlyEvent.cpp */,
-				3901277F1B55242C0041FC56 /* CountlyEvent.h */,
-				390127811B55267D0041FC56 /* CountlyEventQueue.cpp */,
-				390127821B55267D0041FC56 /* CountlyEventQueue.h */,
-				39B197961B625B7F00BE0590 /* CountlyExceptionHandler.h */,
-				39165DC31B677164002BE5D4 /* CountlyExceptionHandler.mm */,
-				391CAAB61B6CB8BD002F8F4A /* CountlyCrashDetail.h */,
-				391CAAB81B6CB8D9002F8F4A /* CountlyCrashDetail.mm */,
-				391ECAD01B77260B00FF7CDC /* CountlyBackTrace.cpp */,
-				391ECAD11B77260B00FF7CDC /* CountlyBackTrace.h */,
-				3950D4871B7CBB5D00DD58AB /* CountlyUserDetails.cpp */,
-				3950D4881B7CBB5D00DD58AB /* CountlyUserDetails.h */,
-				391F5C7D1B8EFF660095F6CC /* CountlyDBManager.cpp */,
-				391F5C7E1B8EFF660095F6CC /* CountlyDBManager.h */,
-				391F5C821B8F44680095F6CC /* CountlyConnection.cpp */,
-				391F5C831B8F44680095F6CC /* CountlyConnection.h */,
+				39B485301BA0633E0083B4AF /* Countly.cpp */,
+				39B485311BA0633E0083B4AF /* Countly.h */,
+				39B485321BA0633E0083B4AF /* CountlyBackTrace.cpp */,
+				39B485331BA0633E0083B4AF /* CountlyBackTrace.h */,
+				39B485341BA0633E0083B4AF /* CountlyConnection.cpp */,
+				39B485351BA0633E0083B4AF /* CountlyConnection.h */,
+				39B485361BA0633E0083B4AF /* CountlyConnectionQueue.cpp */,
+				39B485371BA0633E0083B4AF /* CountlyConnectionQueue.h */,
+				39B485381BA0633E0083B4AF /* CountlyCrashDetail.h */,
+				39B485391BA0633E0083B4AF /* CountlyDB.cpp */,
+				39B4853A1BA0633E0083B4AF /* CountlyDB.h */,
+				39B4853B1BA0633E0083B4AF /* CountlyDBManager.cpp */,
+				39B4853C1BA0633E0083B4AF /* CountlyDBManager.h */,
+				39B4853D1BA0633E0083B4AF /* CountlyDeviceInfo.h */,
+				39B4853E1BA0633E0083B4AF /* CountlyDeviceInfoModel.cpp */,
+				39B4853F1BA0633E0083B4AF /* CountlyDeviceInfoModel.h */,
+				39B485401BA0633E0083B4AF /* CountlyEvent.cpp */,
+				39B485411BA0633E0083B4AF /* CountlyEvent.h */,
+				39B485421BA0633E0083B4AF /* CountlyEventQueue.cpp */,
+				39B485431BA0633E0083B4AF /* CountlyEventQueue.h */,
+				39B485441BA0633E0083B4AF /* CountlyExceptionHandler.h */,
+				39B485451BA0633E0083B4AF /* CountlyMessaging.h */,
+				39B485461BA0633E0083B4AF /* CountlyUserDetails.cpp */,
+				39B485471BA0633E0083B4AF /* CountlyUserDetails.h */,
+				39B485481BA0633E0083B4AF /* CountlyUtils.cpp */,
+				39B485491BA0633E0083B4AF /* CountlyUtils.h */,
+				39B4854A1BA0633E0083B4AF /* ThirdPartyLibs */,
 			);
-			path = countly_sdk;
+			path = CountlyCplus;
+			sourceTree = "<group>";
+		};
+		39B4854A1BA0633E0083B4AF /* ThirdPartyLibs */ = {
+			isa = PBXGroup;
+			children = (
+				39B4854B1BA0633E0083B4AF /* Sqlite */,
+			);
+			path = ThirdPartyLibs;
+			sourceTree = "<group>";
+		};
+		39B4854B1BA0633E0083B4AF /* Sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				39B4854C1BA0633E0083B4AF /* sqlite3.c */,
+				39B4854D1BA0633E0083B4AF /* sqlite3.h */,
+				39B4854E1BA0633E0083B4AF /* sqlite3ext.h */,
+			);
+			path = Sqlite;
 			sourceTree = "<group>";
 		};
 		46880B7519C43A67006E1F66 /* Resources */ = {
@@ -392,7 +409,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				398C03711B4C2055002BD576 /* countly_sdk */,
+				39B4852E1BA0633E0083B4AF /* CountlyiOS */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -595,27 +612,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				391F5C841B8F44680095F6CC /* CountlyConnection.cpp in Sources */,
-				391CAAB91B6CB8D9002F8F4A /* CountlyCrashDetail.mm in Sources */,
-				39CFA2AA1B4D3BFC0075B08F /* CountlyUtils.cpp in Sources */,
-				390127801B55242C0041FC56 /* CountlyEvent.cpp in Sources */,
-				391ECAD21B77260B00FF7CDC /* CountlyBackTrace.cpp in Sources */,
-				391F5C7F1B8EFF660095F6CC /* CountlyDBManager.cpp in Sources */,
-				39165DC41B677164002BE5D4 /* CountlyExceptionHandler.mm in Sources */,
-				39F43E661B837B1C0040988A /* CountlyMessaging.mm in Sources */,
-				39CFA2A41B4D179C0075B08F /* CountlyDeviceInfo.mm in Sources */,
+				39B4855D1BA0633E0083B4AF /* CountlyUtils.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				3901277D1B5510190041FC56 /* CountlyDB.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
-				395BB9BC1B53ACEE00F6A10D /* CountlyConnectionQueue.cpp in Sources */,
-				3950D4891B7CBB5D00DD58AB /* CountlyUserDetails.cpp in Sources */,
-				390127831B55267D0041FC56 /* CountlyEventQueue.cpp in Sources */,
-				398C03741B4C20BC002BD576 /* Countly.cpp in Sources */,
+				39B485591BA0633E0083B4AF /* CountlyDeviceInfoModel.cpp in Sources */,
+				39B4855B1BA0633E0083B4AF /* CountlyEventQueue.cpp in Sources */,
+				39B485561BA0633E0083B4AF /* CountlyConnectionQueue.cpp in Sources */,
+				39B485531BA0633E0083B4AF /* Countly.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				39B485601BA0633E0083B4AF /* CountlyDeviceInfo.mm in Sources */,
+				39B485551BA0633E0083B4AF /* CountlyConnection.cpp in Sources */,
+				39B4855A1BA0633E0083B4AF /* CountlyEvent.cpp in Sources */,
+				39B4855C1BA0633E0083B4AF /* CountlyUserDetails.cpp in Sources */,
+				39B4855F1BA0633E0083B4AF /* CountlyCrashDetail.mm in Sources */,
+				39B4855E1BA0633E0083B4AF /* sqlite3.c in Sources */,
+				39B485621BA0633E0083B4AF /* CountlyMessaging.mm in Sources */,
+				39B485541BA0633E0083B4AF /* CountlyBackTrace.cpp in Sources */,
+				39B485581BA0633E0083B4AF /* CountlyDBManager.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				39B485611BA0633E0083B4AF /* CountlyExceptionHandler.mm in Sources */,
+				39B485571BA0633E0083B4AF /* CountlyDB.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				394A49441B90D0A6007B9895 /* sqlite3.c in Sources */,
-				39CFA2AD1B4D45080075B08F /* CountlyDeviceInfoModel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

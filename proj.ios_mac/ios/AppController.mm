@@ -87,7 +87,7 @@ static AppDelegate s_sharedApplication;
 
     app->run();
   
-  [[CountlyMessaging sharedInstance] startWithTestMessagingUsing:@"0d0c6810152171da71606e22123dab15c99260ca" withHost:@"https://try.count.ly" andOptions:launchOptions];
+  [[CountlyMessaging sharedInstance] startWithTestMessagingUsing:@"0d0c6810152171da71606e22123dab15c99260ca" withHost:@"https://cloud.count.ly" andOptions:launchOptions];
   
   if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:[[CountlyMessaging sharedInstance] countlyNotificationCategories]];

@@ -68,8 +68,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     {        
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
-  
-  Countly::sharedInstance()->startOnCloudWithAppKey("0d0c6810152171da71606e22123dab15c99260ca");
+  Countly::sharedInstance()->start("0d0c6810152171da71606e22123dab15c99260ca", "https://try.count.ly");
 
     register_all_packages();
 
