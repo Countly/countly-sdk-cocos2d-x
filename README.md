@@ -6,8 +6,6 @@ usage and end-user behavior. There are two parts of Countly: [the server that co
 
 This repository includes the Countly Cocos2d-x SDK. [See thi documentation](http://resources.count.ly/v1.0/docs/cocos2d-x) about how to integrate and use Cocos2d-x SDK to send data to Countly servers.
 
-### Other Github resources ###
-
 This SDK needs one of Countly mobile analytics & push notifications server editions. For more information about different editions, see [comparison table](https://count.ly/compare/).
 
 There are also other Countly SDK repositories (both official and community supported) on [Countly resources](http://resources.count.ly/v1.0/docs/downloading-sdks).
