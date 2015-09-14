@@ -79,6 +79,10 @@ void CountlyConnectionQueue::removeFromQueue() {
   dataQueue.erase(0);
 }
 
+void CountlyConnectionQueue::setLocation(double latitude, double longitude) {
+  locationString = __String::createWithFormat("%f,%f",latitude,longitude);
+}
+
 
 void CountlyConnectionQueue::beginSession() {
   const char* metrics =  CountlyDeviceInfoModel::metrics();

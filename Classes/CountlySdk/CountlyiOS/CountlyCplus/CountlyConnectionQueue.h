@@ -26,13 +26,13 @@ private:
   string appKey;
   string appHost;
   bool startedWithTest;
+  __String *locationString;
   CountlyConnectionQueue();
   
   Vector<CountlyConnection*> dataQueue;
   Vector<__String*> dataQueueOld;
   Map<string, __String*> crashCustom;
 public:
-  __String *locationString;
   static CountlyConnectionQueue* sharedInstance();
   
   void tick();
@@ -42,6 +42,7 @@ public:
   void sendUserDetails();
   void setAppKey(string key);
   void setAppHost(string host);
+  void setLocation(double latitude, double longitude);
   void tokenSession(string token, string tokenOS, bool pStartedWithTest);
   void setStartedWithTest(bool pStartedWithTest);
   void addToQueue(__String* data, bool insert = false);

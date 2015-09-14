@@ -173,7 +173,7 @@ void Countly::resume() {
 }
 
 void Countly::setLocation(double latitude, double longitude) {
-  CountlyConnectionQueue::sharedInstance()->locationString = __String::createWithFormat("%f,%f",latitude,longitude);
+  CountlyConnectionQueue::sharedInstance()->setLocation(latitude, longitude);
 }
 
 void Countly::recordEvent(string pKey, int pCount) {
