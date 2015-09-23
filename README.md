@@ -16,9 +16,8 @@ The following features are implemented for iOS & Android:
 
 * General analytics features
 * Crash reporting, including Uncaught Exception Handler, Signal Handler and Terminate Handler for C++
-* Push notifications
+* Push notifications for iOS & Android
 * User profiles
-* Referral tracking
 
 ### Have a question? 
 
