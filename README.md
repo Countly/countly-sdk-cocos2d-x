@@ -21,5 +21,5 @@ The following features are implemented for iOS & Android:
 
 ### Have a question? 
 
-If you find a bug, please submit an issue here. For questions, use [Countly support portal](http://support.count.ly).
+If you find a bug, please submit an issue here. For questions, use [Countly support portal](http://community.count.ly).
 
