@@ -10,7 +10,8 @@ This SDK needs one of Countly mobile analytics & push notifications server editi
 
 There are also other Countly SDK repositories (both official and community supported) on [Countly resources](http://resources.count.ly/v1.0/docs/downloading-sdks).
 
-### Features 
+
+### Features 
 
 The following features are implemented for iOS & Android: 
 
@@ -19,7 +20,7 @@ The following features are implemented for iOS & Android:
 * Push notifications for iOS & Android
 * User profiles
 
-### Have a question? 
+### Have a question? 
 
 If you find a bug, please submit an issue here. For questions, use [Countly support portal](http://community.count.ly).
 
