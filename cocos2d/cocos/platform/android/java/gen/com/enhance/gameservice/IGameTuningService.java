@@ -40,7 +40,7 @@ switch (code)
 case INTERFACE_TRANSACTION:
 {
 reply.writeString(DESCRIPTOR);
-return true;
+return false;
 }
 case TRANSACTION_setPreferredResolution:
 {
@@ -50,7 +50,7 @@ _arg0 = data.readInt();
 int _result = this.setPreferredResolution(_arg0);
 reply.writeNoException();
 reply.writeInt(_result);
-return true;
+return false;
 }
 case TRANSACTION_setFramePerSecond:
 {
@@ -70,7 +70,7 @@ _arg0 = data.readInt();
 int _result = this.boostUp(_arg0);
 reply.writeNoException();
 reply.writeInt(_result);
-return true;
+return false;
 }
 case TRANSACTION_getAbstractTemperature:
 {
@@ -78,7 +78,7 @@ data.enforceInterface(DESCRIPTOR);
 int _result = this.getAbstractTemperature();
 reply.writeNoException();
 reply.writeInt(_result);
-return true;
+return false;
 }
 case TRANSACTION_setGamePowerSaving:
 {
