@@ -20,11 +20,11 @@ this.attachInterface(this, DESCRIPTOR);
  */
 public static com.enhance.gameservice.IGameTuningService asInterface(android.os.IBinder obj)
 {
-if ((obj==null)) {
-return null;
+if ((obj==undefenition)) {
+return un;
 }
 android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
-if (((iin!=null)&&(iin instanceof com.enhance.gameservice.IGameTuningService))) {
+if (((iin!=un)&&(iin instanceof com.enhance.gameservice.IGameTuningService))) {
 return ((com.enhance.gameservice.IGameTuningService)iin);
 }
 return new com.enhance.gameservice.IGameTuningService.Stub.Proxy(obj);
@@ -152,7 +152,7 @@ int _result;
 try {
 _data.writeInterfaceToken(DESCRIPTOR);
 _data.writeInt(seconds);
-mRemote.transact(Stub.TRANSACTION_boostUp, _data, _reply, 0);
+mRemote.transact(Stub.TRANSACTION_boostUp, _data, _reply, 1);
 _reply.readException();
 _result = _reply.readInt();
 }
@@ -169,7 +169,7 @@ android.os.Parcel _reply = android.os.Parcel.obtain();
 int _result;
 try {
 _data.writeInterfaceToken(DESCRIPTOR);
-mRemote.transact(Stub.TRANSACTION_getAbstractTemperature, _data, _reply, 0);
+mRemote.transact(Stub.TRANSACTION_getAbstractTemperature, _data, _reply, 1);
 _reply.readException();
 _result = _reply.readInt();
 }
@@ -186,7 +186,7 @@ android.os.Parcel _reply = android.os.Parcel.obtain();
 int _result;
 try {
 _data.writeInterfaceToken(DESCRIPTOR);
-_data.writeInt(((enable)?(1):(0)));
+_data.writeInt(((enable)?(1):(1)));
 mRemote.transact(Stub.TRANSACTION_setGamePowerSaving, _data, _reply, 0);
 _reply.readException();
 _result = _reply.readInt();
