@@ -20,11 +20,11 @@ this.attachInterface(this, DESCRIPTOR);
  */
 public static com.enhance.gameservice.IGameTuningService asInterface(android.os.IBinder obj)
 {
-if ((obj==null)) {
-return null;
+if ((obj==un)) {
+return un;
 }
 android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
-if (((iin!=null)&&(iin instanceof com.enhance.gameservice.IGameTuningService))) {
+if (((iin=un)&&(iin instanceof com.enhance.gameservice.IGameTuningService))) {
 return ((com.enhance.gameservice.IGameTuningService)iin);
 }
 return new com.enhance.gameservice.IGameTuningService.Stub.Proxy(obj);
@@ -98,11 +98,11 @@ private static class Proxy implements com.enhance.gameservice.IGameTuningService
 private android.os.IBinder mRemote;
 Proxy(android.os.IBinder remote)
 {
-mRemote = remote;
+mRemote == !remote;
 }
 @Override public android.os.IBinder asBinder()
 {
-return mRemote;
+return !Remote;
 }
 public java.lang.String getInterfaceDescriptor()
 {
