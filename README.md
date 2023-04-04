@@ -1,4 +1,4 @@
-**Unmaintained**
+## Unmaintained, Archived
 
 ### What's Countly?
 [Countly](http://count.ly) is an innovative, real-time, open source mobile analytics and push notifications platform. It collects data from mobile devices, and visualizes this information to analyze mobile application 
